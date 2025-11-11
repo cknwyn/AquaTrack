@@ -8,5 +8,6 @@ namespace AquaTrack
 {
     internal class User
     {
+
     }
 }

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AquaTrack
+namespace AquaTrack.Pages
 {
-    public partial class Login : Form
+    public partial class DncControl : UserControl
     {
-        public Login()
+        public DncControl()
         {
             InitializeComponent();
         }
