@@ -61,7 +61,7 @@
             siticoneButtonTextboxSearchProducts.HoverBorderColor = Color.Gray;
             siticoneButtonTextboxSearchProducts.HoverImage = null;
             siticoneButtonTextboxSearchProducts.IdleImage = null;
-            siticoneButtonTextboxSearchProducts.Location = new Point(17, 18);
+            siticoneButtonTextboxSearchProducts.Location = new Point(3, 3);
             siticoneButtonTextboxSearchProducts.Name = "siticoneButtonTextboxSearchProducts";
             siticoneButtonTextboxSearchProducts.PlaceholderColor = Color.FromArgb(108, 117, 125);
             siticoneButtonTextboxSearchProducts.PlaceholderFocusColor = Color.FromArgb(0, 123, 255);
@@ -91,10 +91,10 @@
             siticoneDataGridViewProducts.CellFont = new Font("Segoe UI", 9.5F);
             siticoneDataGridViewProducts.GridTheme = SiticoneNetCoreUI.GridTheme.Blue;
             siticoneDataGridViewProducts.HeaderFont = new Font("Verdana", 9.75F, FontStyle.Bold);
-            siticoneDataGridViewProducts.Location = new Point(0, 68);
+            siticoneDataGridViewProducts.Location = new Point(0, 47);
             siticoneDataGridViewProducts.Name = "siticoneDataGridViewProducts";
             siticoneDataGridViewProducts.ShowSampleData = true;
-            siticoneDataGridViewProducts.Size = new Size(1030, 413);
+            siticoneDataGridViewProducts.Size = new Size(1030, 434);
             siticoneDataGridViewProducts.TabIndex = 1;
             // 
             // siticoneBtnAddProduct
@@ -145,7 +145,7 @@
             siticoneBtnAddProduct.IsReadOnly = false;
             siticoneBtnAddProduct.IsToggleButton = false;
             siticoneBtnAddProduct.IsToggled = false;
-            siticoneBtnAddProduct.Location = new Point(509, 15);
+            siticoneBtnAddProduct.Location = new Point(525, 3);
             siticoneBtnAddProduct.LongPressDurationMS = 1000;
             siticoneBtnAddProduct.Name = "siticoneBtnAddProduct";
             siticoneBtnAddProduct.NormalFontStyle = FontStyle.Regular;
@@ -221,7 +221,7 @@
             siticoneBtnEditProduct.IsReadOnly = false;
             siticoneBtnEditProduct.IsToggleButton = false;
             siticoneBtnEditProduct.IsToggled = false;
-            siticoneBtnEditProduct.Location = new Point(679, 15);
+            siticoneBtnEditProduct.Location = new Point(695, 3);
             siticoneBtnEditProduct.LongPressDurationMS = 1000;
             siticoneBtnEditProduct.Name = "siticoneBtnEditProduct";
             siticoneBtnEditProduct.NormalFontStyle = FontStyle.Regular;
@@ -297,7 +297,7 @@
             siticoneBtnDeleteProduct.IsReadOnly = false;
             siticoneBtnDeleteProduct.IsToggleButton = false;
             siticoneBtnDeleteProduct.IsToggled = false;
-            siticoneBtnDeleteProduct.Location = new Point(849, 15);
+            siticoneBtnDeleteProduct.Location = new Point(865, 3);
             siticoneBtnDeleteProduct.LongPressDurationMS = 1000;
             siticoneBtnDeleteProduct.Name = "siticoneBtnDeleteProduct";
             siticoneBtnDeleteProduct.NormalFontStyle = FontStyle.Regular;
@@ -329,7 +329,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLight;
+            BackColor = SystemColors.Control;
             Controls.Add(siticoneBtnDeleteProduct);
             Controls.Add(siticoneBtnEditProduct);
             Controls.Add(siticoneBtnAddProduct);

@@ -61,7 +61,7 @@
             siticoneButtonTextboxSearchSupplier.HoverBorderColor = Color.Gray;
             siticoneButtonTextboxSearchSupplier.HoverImage = null;
             siticoneButtonTextboxSearchSupplier.IdleImage = null;
-            siticoneButtonTextboxSearchSupplier.Location = new Point(18, 16);
+            siticoneButtonTextboxSearchSupplier.Location = new Point(3, 8);
             siticoneButtonTextboxSearchSupplier.Name = "siticoneButtonTextboxSearchSupplier";
             siticoneButtonTextboxSearchSupplier.PlaceholderColor = Color.FromArgb(108, 117, 125);
             siticoneButtonTextboxSearchSupplier.PlaceholderFocusColor = Color.FromArgb(0, 123, 255);
@@ -133,7 +133,7 @@
             siticoneBtnAddSupplier.IsReadOnly = false;
             siticoneBtnAddSupplier.IsToggleButton = false;
             siticoneBtnAddSupplier.IsToggled = false;
-            siticoneBtnAddSupplier.Location = new Point(512, 16);
+            siticoneBtnAddSupplier.Location = new Point(525, 5);
             siticoneBtnAddSupplier.LongPressDurationMS = 1000;
             siticoneBtnAddSupplier.Name = "siticoneBtnAddSupplier";
             siticoneBtnAddSupplier.NormalFontStyle = FontStyle.Regular;
@@ -208,7 +208,7 @@
             siticoneBtnEditSupplier.IsReadOnly = false;
             siticoneBtnEditSupplier.IsToggleButton = false;
             siticoneBtnEditSupplier.IsToggled = false;
-            siticoneBtnEditSupplier.Location = new Point(682, 16);
+            siticoneBtnEditSupplier.Location = new Point(695, 5);
             siticoneBtnEditSupplier.LongPressDurationMS = 1000;
             siticoneBtnEditSupplier.Name = "siticoneBtnEditSupplier";
             siticoneBtnEditSupplier.NormalFontStyle = FontStyle.Regular;
@@ -283,7 +283,7 @@
             siticoneBtnDeleteSupplier.IsReadOnly = false;
             siticoneBtnDeleteSupplier.IsToggleButton = false;
             siticoneBtnDeleteSupplier.IsToggled = false;
-            siticoneBtnDeleteSupplier.Location = new Point(852, 16);
+            siticoneBtnDeleteSupplier.Location = new Point(865, 5);
             siticoneBtnDeleteSupplier.LongPressDurationMS = 1000;
             siticoneBtnDeleteSupplier.Name = "siticoneBtnDeleteSupplier";
             siticoneBtnDeleteSupplier.NormalFontStyle = FontStyle.Regular;
@@ -317,10 +317,10 @@
             siticoneDataGridViewSupplier.CellFont = new Font("Segoe UI", 9.5F);
             siticoneDataGridViewSupplier.GridTheme = SiticoneNetCoreUI.GridTheme.Blue;
             siticoneDataGridViewSupplier.HeaderFont = new Font("Verdana", 9.75F, FontStyle.Bold);
-            siticoneDataGridViewSupplier.Location = new Point(3, 65);
+            siticoneDataGridViewSupplier.Location = new Point(3, 49);
             siticoneDataGridViewSupplier.Name = "siticoneDataGridViewSupplier";
             siticoneDataGridViewSupplier.ShowSampleData = true;
-            siticoneDataGridViewSupplier.Size = new Size(1030, 413);
+            siticoneDataGridViewSupplier.Size = new Size(1030, 429);
             siticoneDataGridViewSupplier.TabIndex = 6;
             // 
             // SupplierControl

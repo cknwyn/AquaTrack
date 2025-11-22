@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AquaTrack.Pages.Input_Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace AquaTrack.Pages
         public Dashboard()
         {
             InitializeComponent();
+        }
+
+        private void siticoneBtnGenerateReport_Click(object sender, EventArgs e)
+        {
+            // show report form
+            ReportForm reportForm = new ReportForm();
+            reportForm.ShowDialog();
         }
     }
 }

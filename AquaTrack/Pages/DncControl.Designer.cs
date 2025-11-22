@@ -61,7 +61,7 @@
             siticoneButtonTextboxSearchDnc.HoverBorderColor = Color.Gray;
             siticoneButtonTextboxSearchDnc.HoverImage = null;
             siticoneButtonTextboxSearchDnc.IdleImage = null;
-            siticoneButtonTextboxSearchDnc.Location = new Point(15, 18);
+            siticoneButtonTextboxSearchDnc.Location = new Point(3, 3);
             siticoneButtonTextboxSearchDnc.Name = "siticoneButtonTextboxSearchDnc";
             siticoneButtonTextboxSearchDnc.PlaceholderColor = Color.FromArgb(108, 117, 125);
             siticoneButtonTextboxSearchDnc.PlaceholderFocusColor = Color.FromArgb(0, 123, 255);
@@ -132,7 +132,7 @@
             siticoneBtnAddDnc.IsReadOnly = false;
             siticoneBtnAddDnc.IsToggleButton = false;
             siticoneBtnAddDnc.IsToggled = false;
-            siticoneBtnAddDnc.Location = new Point(482, 18);
+            siticoneBtnAddDnc.Location = new Point(525, 3);
             siticoneBtnAddDnc.LongPressDurationMS = 1000;
             siticoneBtnAddDnc.Name = "siticoneBtnAddDnc";
             siticoneBtnAddDnc.NormalFontStyle = FontStyle.Regular;
@@ -207,7 +207,7 @@
             siticoneBtnEditDnc.IsReadOnly = false;
             siticoneBtnEditDnc.IsToggleButton = false;
             siticoneBtnEditDnc.IsToggled = false;
-            siticoneBtnEditDnc.Location = new Point(652, 18);
+            siticoneBtnEditDnc.Location = new Point(695, 3);
             siticoneBtnEditDnc.LongPressDurationMS = 1000;
             siticoneBtnEditDnc.Name = "siticoneBtnEditDnc";
             siticoneBtnEditDnc.NormalFontStyle = FontStyle.Regular;
@@ -282,7 +282,7 @@
             siticoneBtnDeleteDnc.IsReadOnly = false;
             siticoneBtnDeleteDnc.IsToggleButton = false;
             siticoneBtnDeleteDnc.IsToggled = false;
-            siticoneBtnDeleteDnc.Location = new Point(822, 18);
+            siticoneBtnDeleteDnc.Location = new Point(865, 3);
             siticoneBtnDeleteDnc.LongPressDurationMS = 1000;
             siticoneBtnDeleteDnc.Name = "siticoneBtnDeleteDnc";
             siticoneBtnDeleteDnc.NormalFontStyle = FontStyle.Regular;
@@ -316,10 +316,10 @@
             siticoneDataGridViewDnc.CellFont = new Font("Segoe UI", 9.5F);
             siticoneDataGridViewDnc.GridTheme = SiticoneNetCoreUI.GridTheme.Blue;
             siticoneDataGridViewDnc.HeaderFont = new Font("Verdana", 9.75F, FontStyle.Bold);
-            siticoneDataGridViewDnc.Location = new Point(0, 74);
+            siticoneDataGridViewDnc.Location = new Point(0, 47);
             siticoneDataGridViewDnc.Name = "siticoneDataGridViewDnc";
             siticoneDataGridViewDnc.ShowSampleData = true;
-            siticoneDataGridViewDnc.Size = new Size(1030, 404);
+            siticoneDataGridViewDnc.Size = new Size(1030, 431);
             siticoneDataGridViewDnc.TabIndex = 6;
             // 
             // DncControl

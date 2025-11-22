@@ -11,7 +11,10 @@ namespace AquaTrack
         private Dashboard dashboardPage = new Dashboard();
         private ProductsControl productsPage = new ProductsControl();
         private SupplierControl supplierPage = new SupplierControl();
+        private SalesControl salesPage = new SalesControl();
+        private CustomersControl customersPage = new CustomersControl();
         private DncControl dncPage = new DncControl();
+        private TasksControl tasksPage = new TasksControl();
 
         public MainForm()
         {
@@ -20,10 +23,21 @@ namespace AquaTrack
             siticoneContentPanelMain.AddContentToView("Products", productsPage, DockStyle.Fill);
             siticoneContentPanelMain.AddContentToView("Suppliers", supplierPage, DockStyle.Fill);
             siticoneContentPanelMain.AddContentToView("Damage and Casualties", dncPage, DockStyle.Fill);
+            siticoneContentPanelMain.AddContentToView("Sales", salesPage, DockStyle.Fill);
+            siticoneContentPanelMain.AddContentToView("Customers", customersPage, DockStyle.Fill);
+            siticoneContentPanelMain.AddContentToView("Tasks", tasksPage, DockStyle.Fill);
 
             siticoneContentPanelDashboard.AddContentToView("Dashboard", dashboardPage, DockStyle.Fill);
-            siticoneContentPanelDashboard.NavigateToView("Dashboard");
+
+            this.Load += MainForm_Load;
             siticoneContentPanelMain.AfterNavigate += siticoneContentPanelMain_AfterNavigate;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // Initial navigation to Dashboard
+            siticoneContentPanelDashboard.NavigateToView("Dashboard");
+            siticoneContentPanelDashboard.BringToFront();
         }
 
         private void siticoneContentPanelMain_AfterNavigate(object sender, EventArgs e)
@@ -44,12 +58,24 @@ namespace AquaTrack
                         siticoneContentPanelMain.NavigateToView("Damage and Casualties");
                         break;
                     case "Sales":
-                        // Navigate to Sales if implemented
+                        siticoneContentPanelMain.NavigateToView("Sales");
                         break;
                     case "Tasks":
-                        // Navigate to Tasks if implemented
+                        siticoneContentPanelMain.NavigateToView("Tasks");
                         break;
-                        // Add more cases as needed for other navigation items
+                    case "Customers":
+                        siticoneContentPanelMain.NavigateToView("Customers");
+                        break;
+                    case "Logout":
+                        var result = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            LoginForm loginForm = new LoginForm();
+                            loginForm.Show();
+                            this.Close();
+                            
+                        }
+                        break;
                 }
             }
         }
