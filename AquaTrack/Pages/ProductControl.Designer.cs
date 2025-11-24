@@ -34,6 +34,7 @@
             siticoneBtnAddProduct = new SiticoneNetCoreUI.SiticoneButton();
             siticoneBtnEditProduct = new SiticoneNetCoreUI.SiticoneButton();
             siticoneBtnDeleteProduct = new SiticoneNetCoreUI.SiticoneButton();
+            siticoneDropdownProductFilter = new SiticoneNetCoreUI.SiticoneDropdown();
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewProducts).BeginInit();
             SuspendLayout();
             // 
@@ -325,11 +326,48 @@
             siticoneBtnDeleteProduct.UseParticles = false;
             siticoneBtnDeleteProduct.Click += siticoneBtnDeleteProduct_Click;
             // 
+            // siticoneDropdownProductFilter
+            // 
+            siticoneDropdownProductFilter.AllowMultipleSelection = false;
+            siticoneDropdownProductFilter.BackColor = Color.FromArgb(240, 245, 255);
+            siticoneDropdownProductFilter.BorderColor = Color.FromArgb(100, 150, 220);
+            siticoneDropdownProductFilter.CanBeep = false;
+            siticoneDropdownProductFilter.CanShake = true;
+            siticoneDropdownProductFilter.DataSource = null;
+            siticoneDropdownProductFilter.DisplayMember = null;
+            siticoneDropdownProductFilter.DropdownBackColor = Color.FromArgb(245, 250, 255);
+            siticoneDropdownProductFilter.DropdownWidth = 0;
+            siticoneDropdownProductFilter.DropShadowEnabled = false;
+            siticoneDropdownProductFilter.Font = new Font("Segoe UI", 10F);
+            siticoneDropdownProductFilter.ForeColor = Color.FromArgb(40, 40, 100);
+            siticoneDropdownProductFilter.HoveredItemBackColor = Color.FromArgb(220, 235, 255);
+            siticoneDropdownProductFilter.HoveredItemTextColor = Color.FromArgb(40, 40, 100);
+            siticoneDropdownProductFilter.IsReadonly = false;
+            siticoneDropdownProductFilter.ItemHeight = 30;
+            siticoneDropdownProductFilter.Items.AddRange(new string[] { "All", "Fish", "Equipment" });
+            siticoneDropdownProductFilter.Location = new Point(269, 4);
+            siticoneDropdownProductFilter.MaxDropDownItems = 8;
+            siticoneDropdownProductFilter.Name = "siticoneDropdownProductFilter";
+            siticoneDropdownProductFilter.PlaceholderColor = Color.FromArgb(150, 170, 200);
+            siticoneDropdownProductFilter.PlaceholderDisappearsOnFocus = false;
+            siticoneDropdownProductFilter.PlaceholderText = "Select an option";
+            siticoneDropdownProductFilter.SelectedIndex = -1;
+            siticoneDropdownProductFilter.SelectedItem = null;
+            siticoneDropdownProductFilter.SelectedItemBackColor = Color.FromArgb(70, 130, 220);
+            siticoneDropdownProductFilter.SelectedItemTextColor = Color.White;
+            siticoneDropdownProductFilter.SelectedValue = null;
+            siticoneDropdownProductFilter.Size = new Size(205, 34);
+            siticoneDropdownProductFilter.TabIndex = 5;
+            siticoneDropdownProductFilter.UnselectedItemTextColor = Color.FromArgb(40, 40, 100);
+            siticoneDropdownProductFilter.ValueMember = null;
+            siticoneDropdownProductFilter.SelectedIndexChanged += siticoneDropdownProductFilter_SelectedIndexChanged;
+            // 
             // ProductsControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
+            Controls.Add(siticoneDropdownProductFilter);
             Controls.Add(siticoneBtnDeleteProduct);
             Controls.Add(siticoneBtnEditProduct);
             Controls.Add(siticoneBtnAddProduct);
@@ -344,9 +382,10 @@
         #endregion
 
         private SiticoneNetCoreUI.SiticoneButtonTextbox siticoneButtonTextboxSearchProducts;
-        private SiticoneNetCoreUI.SiticoneDataGridView siticoneDataGridViewProducts;
         private SiticoneNetCoreUI.SiticoneButton siticoneBtnAddProduct;
         private SiticoneNetCoreUI.SiticoneButton siticoneBtnEditProduct;
         private SiticoneNetCoreUI.SiticoneButton siticoneBtnDeleteProduct;
+        private SiticoneNetCoreUI.SiticoneDropdown siticoneDropdownProductFilter;
+        private SiticoneNetCoreUI.SiticoneDataGridView siticoneDataGridViewProducts;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AquaTrack.Models
 {
-    internal class Report
+    public class Report
     {
         public int ReportID { get; set; } 
         public DateTime ReportDate { get; set; } 

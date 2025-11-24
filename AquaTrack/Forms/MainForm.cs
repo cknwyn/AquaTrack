@@ -1,8 +1,11 @@
+using AquaTrack.Data;
+using AquaTrack.Pages;
+using Microsoft.EntityFrameworkCore;
+using SiticoneNetCoreUI;
 using System;
 using System.Drawing;
+using System.Runtime.InteropServices.Marshalling;
 using System.Windows.Forms;
-using AquaTrack.Pages;
-using SiticoneNetCoreUI;
 
 namespace AquaTrack
 {
@@ -29,18 +32,27 @@ namespace AquaTrack
 
             siticoneContentPanelDashboard.AddContentToView("Dashboard", dashboardPage, DockStyle.Fill);
 
+            productsPage.ProductsChanged += ProductsPage_ProductsChanged;
+
             this.Load += MainForm_Load;
             siticoneContentPanelMain.AfterNavigate += siticoneContentPanelMain_AfterNavigate;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object? sender, EventArgs e)
         {
             // Initial navigation to Dashboard
             siticoneContentPanelDashboard.NavigateToView("Dashboard");
             siticoneContentPanelDashboard.BringToFront();
+
+            dashboardPage.RefreshCounts();
         }
 
-        private void siticoneContentPanelMain_AfterNavigate(object sender, EventArgs e)
+        private void ProductsPage_ProductsChanged(object? sender, EventArgs e)
+        {
+            dashboardPage.RefreshCounts();
+        }
+
+        private void siticoneContentPanelMain_AfterNavigate(object? sender, EventArgs e)
         {
             // Handle navigation events
             if (siticoneNavbarMain.SelectedItem != null)
@@ -70,7 +82,12 @@ namespace AquaTrack
                         var result = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
-                            LoginForm loginForm = new LoginForm();
+                            var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
+                            optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db");
+
+                            InventoryContext context = new InventoryContext(optionsBuilder.Options);
+
+                            LoginForm loginForm = new LoginForm(context);
                             loginForm.Show();
                             this.Close();
                             

@@ -159,6 +159,7 @@
             siticoneBtnAddSupplier.TooltipText = null;
             siticoneBtnAddSupplier.UseAdvancedRendering = true;
             siticoneBtnAddSupplier.UseParticles = false;
+            siticoneBtnAddSupplier.Click += siticoneBtnAddSupplier_Click;
             // 
             // siticoneBtnEditSupplier
             // 
@@ -234,6 +235,7 @@
             siticoneBtnEditSupplier.TooltipText = null;
             siticoneBtnEditSupplier.UseAdvancedRendering = true;
             siticoneBtnEditSupplier.UseParticles = false;
+            siticoneBtnEditSupplier.Click += siticoneBtnEditSupplier_Click;
             // 
             // siticoneBtnDeleteSupplier
             // 
@@ -309,6 +311,7 @@
             siticoneBtnDeleteSupplier.TooltipText = null;
             siticoneBtnDeleteSupplier.UseAdvancedRendering = true;
             siticoneBtnDeleteSupplier.UseParticles = false;
+            siticoneBtnDeleteSupplier.Click += siticoneBtnDeleteSupplier_Click;
             // 
             // siticoneDataGridViewSupplier
             // 
@@ -334,6 +337,7 @@
             Controls.Add(siticoneButtonTextboxSearchSupplier);
             Name = "SupplierControl";
             Size = new Size(1032, 478);
+            Load += SupplierControl_Load;
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewSupplier).EndInit();
             ResumeLayout(false);
         }

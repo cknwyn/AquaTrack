@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace AquaTrack.Models
 {
-    internal class SaleItem
+    public class SaleItem
     {
         public int SaleID { get; set; }
         public int SaleItemID { get; set; }
         public int ProductID { get; set; }
         public int Quantity { get; set; }
         public decimal Subtotal { get; set; }
-
-        public Sale Sale { get; set; }
-        public Products Product { get; set; }
     }
 }

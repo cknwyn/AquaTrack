@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AquaTrack.Pages.Input_Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace AquaTrack.Pages
         public SalesControl()
         {
             InitializeComponent();
+        }
+
+        private void siticoneBtnAddSale_Click(object sender, EventArgs e)
+        {
+            SalesForm salesForm = new SalesForm();
+            salesForm.ShowDialog();
         }
     }
 }

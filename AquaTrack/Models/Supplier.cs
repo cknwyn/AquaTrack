@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AquaTrack.Models
 {
-    internal class Supplier
+    public class Supplier
     {
         public Supplier() { }
         public int SupplierID { get; set; }
@@ -14,7 +14,6 @@ namespace AquaTrack.Models
         public string ContactNumber { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-
-        public ICollection<Products> Products { get; set; }
+        public string Notes { get; set; }
     }
 }

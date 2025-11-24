@@ -158,6 +158,7 @@
             siticoneBtnAddDnc.TooltipText = null;
             siticoneBtnAddDnc.UseAdvancedRendering = true;
             siticoneBtnAddDnc.UseParticles = false;
+            siticoneBtnAddDnc.Click += siticoneBtnAddDnc_Click;
             // 
             // siticoneBtnEditDnc
             // 
@@ -333,6 +334,7 @@
             Controls.Add(siticoneButtonTextboxSearchDnc);
             Name = "DncControl";
             Size = new Size(1032, 478);
+            Load += DncControl_Load;
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewDnc).EndInit();
             ResumeLayout(false);
         }

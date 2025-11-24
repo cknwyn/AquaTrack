@@ -336,6 +336,7 @@
             siticoneBtnAddSale.TooltipText = null;
             siticoneBtnAddSale.UseAdvancedRendering = true;
             siticoneBtnAddSale.UseParticles = false;
+            siticoneBtnAddSale.Click += siticoneBtnAddSale_Click;
             // 
             // SalesControl
             // 

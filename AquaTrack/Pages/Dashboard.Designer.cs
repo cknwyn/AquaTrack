@@ -177,6 +177,7 @@
             siticoneLabelProductsValue.Size = new Size(154, 23);
             siticoneLabelProductsValue.TabIndex = 3;
             siticoneLabelProductsValue.Text = "0";
+            siticoneLabelProductsValue.Click += siticoneLabelProductsValue_Click;
             // 
             // siticoneLabelProducts
             // 

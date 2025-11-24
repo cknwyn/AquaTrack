@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace AquaTrack.Models
 {
-    internal class TaskNotes
+    public class TaskNotes
     {
-        public string NoteId { get; set; }
-        public string deadline { get; set; }
-        public string content { get; set; }
-        public string status { get; set; }
+        public int TasknotesID { get; set; }
+        public DateTime? Deadline { get; set; }
+        public string Content { get; set; }
+        public bool Status { get; set; }
     }
 }

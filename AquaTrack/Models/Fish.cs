@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace AquaTrack.Models
 {
-    internal class Fish : Products
+    public class Fish : Products
     {
-        public int FishID { get; set; }
-        public int ProductID { get; set; } // Foreign key to Products
         public string Species { get; set; }
-        public string WaterType { get; set; } // e.g., Freshwater, Saltwater
-        public string Size { get; set; } // e.g., Small, Medium, Large
+        public string WaterEnvironment { get; set; } // e.g., Freshwater, Saltwater
         public int Age { get; set; } // in months
     }
 }

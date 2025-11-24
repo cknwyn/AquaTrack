@@ -8,12 +8,19 @@ using System.Threading.Tasks;
 
 namespace AquaTrack.Data
 {
-    internal class InventoryContext : DbContext
+    public class InventoryContext : DbContext
     {
+
+        public InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
+        {
+            Database.EnsureCreated();
+        }
         public DbSet<User> Users { get; set; }
         public DbSet<TaskNotes> TaskNotes { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Products> Products { get; set; }
+        public DbSet<Fish> Fish { get; set; }
+        public DbSet<Equipment> Equipment { get; set; } 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<SaleItem> SaleItems { get; set; }
@@ -22,46 +29,37 @@ namespace AquaTrack.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Products>().ToTable("Products");
+            modelBuilder.Entity<Fish>().ToTable("Fish");
+            modelBuilder.Entity<Equipment>().ToTable("Equipment");
+
             modelBuilder.Entity<User>()
-                .HasIndex(u => u.Username)
+                .HasIndex(u => u.UserID)
+                .IsUnique();
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    UserID = 1,
+                    Username = "admin",
+                    Password = "admin123",
+                    Email = "test@gmail.com",
+                    Role = "Admin"
+                } );
+
+            modelBuilder.Entity<Supplier>()
+                .HasIndex(s => s.SupplierID)
                 .IsUnique();
 
             modelBuilder.Entity<TaskNotes>()
-                .HasIndex(t => t.NoteId)
+                .HasIndex(t => t.TasknotesID)
                 .IsUnique();
 
-            modelBuilder.Entity<Products>()
-                .HasMany(p => p.SaleItems)
-                .WithOne(si => si.Product)
-                .HasForeignKey(si => si.ProductID);
-
-            modelBuilder.Entity<Products>()
-                // damage items, sale items, and suppliers
-                .HasMany(p => p.DamageAndCasualties)
-                .WithOne(d => d.Product)
-                .HasForeignKey(d => d.ProductID);
-
-            modelBuilder.Entity<Products>()
-                // supplier relationship
-                .HasOne(p => p.Supplier)
-                .WithMany(s => s.Products)
-                .HasForeignKey(p => p.SupplierID);
-
-            modelBuilder.Entity<Products>()
-                // sale items relationship
-                .HasMany(p => p.SaleItems)
-                .WithOne(si => si.Product)
-                .HasForeignKey(si => si.ProductID);
-
             modelBuilder.Entity<Customer>()
-                .HasMany(c => c.Sales)
-                .WithOne(s => s.Customer)
-                .HasForeignKey(s => s.CustomerID);
-
-            modelBuilder.Entity<Sale>()
-                .HasMany(s => s.SaleItems)
-                .WithOne(i => i.Sale)
-                .HasForeignKey(i => i.SaleID);
+                .HasIndex(c => c.CustomerID)
+                .IsUnique();
         }
     }
 }
