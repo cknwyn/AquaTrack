@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesForm));
             siticoneLabelSaleDetails = new SiticoneNetCoreUI.SiticoneLabel();
             siticoneDropdownSaleCustomerName = new SiticoneNetCoreUI.SiticoneDropdown();
@@ -39,10 +40,14 @@
             siticoneButtonSaleConfirm = new SiticoneNetCoreUI.SiticoneButton();
             siticoneButtonSaleCancel = new SiticoneNetCoreUI.SiticoneButton();
             siticoneBtnAddSaleItem = new SiticoneNetCoreUI.SiticoneButton();
-            siticoneDataGridView1 = new SiticoneNetCoreUI.SiticoneDataGridView();
+            saleItemBindingSource = new BindingSource(components);
             siticoneBtnEditSaleItem = new SiticoneNetCoreUI.SiticoneButton();
             siticoneBtnDeleteSaleItem = new SiticoneNetCoreUI.SiticoneButton();
-            ((System.ComponentModel.ISupportInitialize)siticoneDataGridView1).BeginInit();
+            siticoneDataGridViewSaleItem = new SiticoneNetCoreUI.SiticoneDataGridView();
+            saleItemBindingSource1 = new BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)saleItemBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewSaleItem).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)saleItemBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // siticoneLabelSaleDetails
@@ -89,6 +94,7 @@
             siticoneDropdownSaleCustomerName.Text = "siticoneDropdown1";
             siticoneDropdownSaleCustomerName.UnselectedItemTextColor = Color.FromArgb(40, 40, 100);
             siticoneDropdownSaleCustomerName.ValueMember = null;
+            siticoneDropdownSaleCustomerName.Click += siticoneDropdownSaleCustomerName_Click;
             // 
             // siticoneDTPSaleDate
             // 
@@ -270,6 +276,7 @@
             siticoneDropdownSalePaymentMethod.HoveredItemTextColor = Color.FromArgb(40, 40, 100);
             siticoneDropdownSalePaymentMethod.IsReadonly = false;
             siticoneDropdownSalePaymentMethod.ItemHeight = 30;
+            siticoneDropdownSalePaymentMethod.Items.AddRange(new string[] { "Cash", "Credit Card", "Debit Card", "GCash", "Maya", "" });
             siticoneDropdownSalePaymentMethod.Location = new Point(45, 291);
             siticoneDropdownSalePaymentMethod.MaxDropDownItems = 8;
             siticoneDropdownSalePaymentMethod.Name = "siticoneDropdownSalePaymentMethod";
@@ -283,7 +290,6 @@
             siticoneDropdownSalePaymentMethod.SelectedValue = null;
             siticoneDropdownSalePaymentMethod.Size = new Size(269, 40);
             siticoneDropdownSalePaymentMethod.TabIndex = 3;
-            siticoneDropdownSalePaymentMethod.Text = "siticoneDropdown2";
             siticoneDropdownSalePaymentMethod.UnselectedItemTextColor = Color.FromArgb(40, 40, 100);
             siticoneDropdownSalePaymentMethod.ValueMember = null;
             // 
@@ -391,6 +397,7 @@
             siticoneButtonSaleConfirm.TooltipText = null;
             siticoneButtonSaleConfirm.UseAdvancedRendering = true;
             siticoneButtonSaleConfirm.UseParticles = false;
+            siticoneButtonSaleConfirm.Click += siticoneButtonSaleConfirm_Click;
             // 
             // siticoneButtonSaleCancel
             // 
@@ -466,6 +473,7 @@
             siticoneButtonSaleCancel.TooltipText = null;
             siticoneButtonSaleCancel.UseAdvancedRendering = true;
             siticoneButtonSaleCancel.UseParticles = false;
+            siticoneButtonSaleCancel.Click += siticoneButtonSaleCancel_Click;
             // 
             // siticoneBtnAddSaleItem
             // 
@@ -541,17 +549,11 @@
             siticoneBtnAddSaleItem.TooltipText = null;
             siticoneBtnAddSaleItem.UseAdvancedRendering = true;
             siticoneBtnAddSaleItem.UseParticles = false;
+            siticoneBtnAddSaleItem.Click += siticoneBtnAddSaleItem_Click;
             // 
-            // siticoneDataGridView1
+            // saleItemBindingSource
             // 
-            siticoneDataGridView1.BackColor = Color.FromArgb(45, 45, 48);
-            siticoneDataGridView1.CellFont = new Font("Segoe UI", 9.5F);
-            siticoneDataGridView1.DataSource = null;
-            siticoneDataGridView1.HeaderFont = new Font("Segoe UI", 10F, FontStyle.Bold);
-            siticoneDataGridView1.Location = new Point(347, 2);
-            siticoneDataGridView1.Name = "siticoneDataGridView1";
-            siticoneDataGridView1.Size = new Size(503, 481);
-            siticoneDataGridView1.TabIndex = 14;
+            saleItemBindingSource.DataSource = typeof(Models.SaleItem);
             // 
             // siticoneBtnEditSaleItem
             // 
@@ -703,14 +705,30 @@
             siticoneBtnDeleteSaleItem.UseAdvancedRendering = true;
             siticoneBtnDeleteSaleItem.UseParticles = false;
             // 
+            // siticoneDataGridViewSaleItem
+            // 
+            siticoneDataGridViewSaleItem.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            siticoneDataGridViewSaleItem.BackColor = Color.FromArgb(45, 45, 48);
+            siticoneDataGridViewSaleItem.CellFont = new Font("Segoe UI", 9.5F);
+            siticoneDataGridViewSaleItem.HeaderFont = new Font("Segoe UI", 10F, FontStyle.Bold);
+            siticoneDataGridViewSaleItem.Location = new Point(347, 2);
+            siticoneDataGridViewSaleItem.Name = "siticoneDataGridViewSaleItem";
+            siticoneDataGridViewSaleItem.ShowSampleData = true;
+            siticoneDataGridViewSaleItem.Size = new Size(550, 481);
+            siticoneDataGridViewSaleItem.TabIndex = 17;
+            // 
+            // saleItemBindingSource1
+            // 
+            saleItemBindingSource1.DataSource = typeof(Models.SaleItem);
+            // 
             // SalesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(856, 523);
+            ClientSize = new Size(898, 523);
+            Controls.Add(siticoneDataGridViewSaleItem);
             Controls.Add(siticoneBtnDeleteSaleItem);
             Controls.Add(siticoneBtnEditSaleItem);
-            Controls.Add(siticoneDataGridView1);
             Controls.Add(siticoneBtnAddSaleItem);
             Controls.Add(siticoneButtonSaleCancel);
             Controls.Add(siticoneButtonSaleConfirm);
@@ -724,7 +742,9 @@
             Name = "SalesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SalesForm";
-            ((System.ComponentModel.ISupportInitialize)siticoneDataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)saleItemBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewSaleItem).EndInit();
+            ((System.ComponentModel.ISupportInitialize)saleItemBindingSource1).EndInit();
             ResumeLayout(false);
         }
 
@@ -742,8 +762,10 @@
         private SiticoneNetCoreUI.SiticoneButton siticoneBtnDeleteCustomer;
         private SiticoneNetCoreUI.SiticoneButton siticoneBtnEditCustomer;
         private SiticoneNetCoreUI.SiticoneButton siticoneBtnAddSaleItem;
-        private SiticoneNetCoreUI.SiticoneDataGridView siticoneDataGridView1;
         private SiticoneNetCoreUI.SiticoneButton siticoneBtnEditSaleItem;
         private SiticoneNetCoreUI.SiticoneButton siticoneBtnDeleteSaleItem;
+        private BindingSource saleItemBindingSource;
+        private SiticoneNetCoreUI.SiticoneDataGridView siticoneDataGridViewSaleItem;
+        private BindingSource saleItemBindingSource1;
     }
 }

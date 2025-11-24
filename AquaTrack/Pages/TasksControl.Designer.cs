@@ -86,15 +86,18 @@
             // 
             // siticoneDataGridViewTasks
             // 
+            siticoneDataGridViewTasks.AllowUserToResizeColumns = false;
+            siticoneDataGridViewTasks.AutoScroll = true;
             siticoneDataGridViewTasks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             siticoneDataGridViewTasks.BackColor = Color.FromArgb(240, 248, 255);
             siticoneDataGridViewTasks.CellFont = new Font("Segoe UI", 9.5F);
             siticoneDataGridViewTasks.GridTheme = SiticoneNetCoreUI.GridTheme.Blue;
             siticoneDataGridViewTasks.HeaderFont = new Font("Verdana", 9.75F, FontStyle.Bold);
             siticoneDataGridViewTasks.Location = new Point(0, 47);
+            siticoneDataGridViewTasks.LockCellEditing = false;
             siticoneDataGridViewTasks.Name = "siticoneDataGridViewTasks";
             siticoneDataGridViewTasks.ShowSampleData = true;
-            siticoneDataGridViewTasks.Size = new Size(1030, 431);
+            siticoneDataGridViewTasks.Size = new Size(1032, 431);
             siticoneDataGridViewTasks.TabIndex = 7;
             siticoneDataGridViewTasks.Load += TasksControl_Load;
             // 

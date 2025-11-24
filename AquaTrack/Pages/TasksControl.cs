@@ -36,19 +36,31 @@ namespace AquaTrack.Pages
 
         private void Grid_CurrentCellDirtyStateChanged(object? sender, EventArgs e)
         {
-            if (_grid.IsCurrentCellDirty && _grid.CurrentCell is DataGridViewCheckBoxCell)
-                _grid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            // Ensure we are in a checkbox column before forcing the commit
+            if (_grid.IsCurrentCellDirty)
+            {
+                // Check if the current column is the 'Status' column (the checkbox column)
+                if (_grid.CurrentCell.OwningColumn.Name == "Status")
+                {
+                    // Force the grid to finalize the edit and update the bound data source
+                    _grid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                }
+            }
         }
 
         private async void Grid_CellValueChanged(object? sender, DataGridViewCellEventArgs e)
         {
-            // Only care about checkbox column changes (status)
+            // 1. Only care about the Status column changes
             if (e.RowIndex < 0 || _grid.Columns[e.ColumnIndex].Name != "Status") return;
 
-            // Retrieve the updated model from the binding list
+            // 2. Retrieve the updated model from the binding list
             if (e.RowIndex >= 0 && e.RowIndex < _bindingList.Count)
             {
                 var item = _bindingList[e.RowIndex];
+
+                // **CRITICAL:** Read the NEW Status value from the UI/BindingList
+                bool newStatus = item.Status;
+
                 try
                 {
                     // Persist change to the database
@@ -57,22 +69,30 @@ namespace AquaTrack.Pages
                         .Options;
 
                     using var ctx = new InventoryContext(options);
-                    // Attach and mark modified (or load entity and set)
+
+                    // 3. Find the entity in the database
                     var entity = await ctx.TaskNotes.FindAsync(item.TasknotesID);
+
                     if (entity != null)
                     {
-                        entity.Status = item.Status;
+                        // 4. Update the entity with the NEW Status value
+                        entity.Status = newStatus;
                         await ctx.SaveChangesAsync();
+
+                        // Optional: Provide UI feedback for success
+                        // Console.WriteLine($"Task {item.TasknotesID} updated to Status: {newStatus}");
                     }
                     else
                     {
+                        // Handle case where entity was deleted elsewhere
                         await LoadTasksAsync();
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Failed to update task status: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    // Optionally reload to revert UI
+
+                    // Reload the tasks to revert the UI checkbox to the saved state
                     await LoadTasksAsync();
                 }
             }
@@ -99,6 +119,7 @@ namespace AquaTrack.Pages
                     BeginInvoke(new Action(() =>
                     {
                         _grid.DataSource = _bindingList;
+                        LockDownGridColumns();
                     }));
                 }
                 else
@@ -122,6 +143,29 @@ namespace AquaTrack.Pages
         public async Task refreshTasksList()
         {
             await LoadTasksAsync();
+            OnTasksChanged();
+        }
+
+        private void LockDownGridColumns()
+        {
+            // Loop through all automatically generated columns
+            foreach (DataGridViewColumn column in _grid.Columns)
+            {
+                // By default, set every column to read-only
+                column.ReadOnly = true;
+
+                // Exempt the Status column and any other ID/Key columns you need to hide
+                if (column.DataPropertyName == "Status")
+                {
+                    column.ReadOnly = false; // Allow editing (checking/unchecking)
+                }
+                else if (column.DataPropertyName == "TasknotesID")
+                {
+                    // You should hide the ID column but keep it read-only
+                    column.Visible = false;
+                }
+                // Add more 'else if' conditions here for any other editable columns
+            }
         }
 
         private async void siticoneBtnDeleteTask_Click(object sender, EventArgs e)
@@ -192,7 +236,6 @@ namespace AquaTrack.Pages
                 }
 
                 await _context.SaveChangesAsync();
-
                 // reload and notify
                 await refreshTasksList();
 

@@ -47,12 +47,12 @@ namespace AquaTrack.Pages
                            .Options))
                     {
                         siticoneLabelProductsValue.Text = context.Products.Count().ToString();
+                        siticoneLabelDnCValues.Text = context.DamagedItems.Count().ToString();
+                        siticoneLabelTasksValue.Text = context.TaskNotes.Count().ToString();
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Optionally log the error. Do not crash the UI.
-                    // For now, show a simple fallback value.
                     siticoneLabelProductsValue.Text = "0";
                 }
             };
@@ -64,16 +64,31 @@ namespace AquaTrack.Pages
         }
     }
 
-    // Partial class to add an event without changing the designer-generated file.
     public partial class ProductsControl
     {
         // Raised after product list changes (add, edit, delete).
         public event EventHandler? ProductsChanged;
-
-        // Call this method from within ProductsControl after you successfully add/edit/delete a product.
         protected void OnProductsChanged()
         {
             ProductsChanged?.Invoke(this, EventArgs.Empty);
         }
     }
+    public partial class TasksControl
+    {
+        public event EventHandler? TasksChanged;
+        protected void OnTasksChanged()
+        {
+            TasksChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    public partial class DncControl
+    {
+        public event EventHandler? DncChanged;
+        protected void OnDncChanged()
+        {
+            DncChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
 }
+

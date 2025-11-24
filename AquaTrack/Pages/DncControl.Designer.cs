@@ -309,6 +309,7 @@
             siticoneBtnDeleteDnc.TooltipText = null;
             siticoneBtnDeleteDnc.UseAdvancedRendering = true;
             siticoneBtnDeleteDnc.UseParticles = false;
+            siticoneBtnDeleteDnc.Click += siticoneBtnDeleteDnc_Click;
             // 
             // siticoneDataGridViewDnc
             // 

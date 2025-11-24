@@ -63,8 +63,8 @@ namespace AquaTrack.Pages
                     foreach (DataGridViewCell cell in row.Cells)
                     {
                         if (cell.Value != null && int.TryParse(cell.Value.ToString(), out var parsed) &&
-                            (string.Equals(cell.OwningColumn.Name, "ProductsID", StringComparison.OrdinalIgnoreCase) ||
-                             string.Equals(cell.OwningColumn.HeaderText, "ProductsID", StringComparison.OrdinalIgnoreCase) ||
+                            (string.Equals(cell.OwningColumn.Name, "ProductID", StringComparison.OrdinalIgnoreCase) ||
+                             string.Equals(cell.OwningColumn.HeaderText, "ProductID", StringComparison.OrdinalIgnoreCase) ||
                              string.Equals(cell.OwningColumn.Name, "ID", StringComparison.OrdinalIgnoreCase)))
                         {
                             idsToDelete.Add(parsed);

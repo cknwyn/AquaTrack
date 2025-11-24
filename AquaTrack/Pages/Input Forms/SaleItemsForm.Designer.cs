@@ -72,6 +72,7 @@
             siticoneDropdownSaleItemProduct.Text = "siticoneDropdown1";
             siticoneDropdownSaleItemProduct.UnselectedItemTextColor = Color.FromArgb(40, 40, 100);
             siticoneDropdownSaleItemProduct.ValueMember = null;
+            siticoneDropdownSaleItemProduct.Click += siticoneDropdownSaleItemProduct_Click;
             // 
             // siticoneUpDown1
             // 
@@ -210,6 +211,7 @@
             siticoneButtonSaleItemConfirm.TooltipText = null;
             siticoneButtonSaleItemConfirm.UseAdvancedRendering = true;
             siticoneButtonSaleItemConfirm.UseParticles = false;
+            siticoneButtonSaleItemConfirm.Click += siticoneButtonSaleItemConfirm_Click;
             // 
             // siticoneButtonSaleItemCancel
             // 
@@ -285,6 +287,7 @@
             siticoneButtonSaleItemCancel.TooltipText = null;
             siticoneButtonSaleItemCancel.UseAdvancedRendering = true;
             siticoneButtonSaleItemCancel.UseParticles = false;
+            siticoneButtonSaleItemCancel.Click += siticoneButtonSaleItemCancel_Click;
             // 
             // SaleItemsForm
             // 

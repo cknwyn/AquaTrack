@@ -33,6 +33,8 @@ namespace AquaTrack
             siticoneContentPanelDashboard.AddContentToView("Dashboard", dashboardPage, DockStyle.Fill);
 
             productsPage.ProductsChanged += ProductsPage_ProductsChanged;
+            tasksPage.TasksChanged += TasksPage_TasksChanged;
+            dncPage.DncChanged += DncPage_DncChanged;
 
             this.Load += MainForm_Load;
             siticoneContentPanelMain.AfterNavigate += siticoneContentPanelMain_AfterNavigate;
@@ -48,6 +50,16 @@ namespace AquaTrack
         }
 
         private void ProductsPage_ProductsChanged(object? sender, EventArgs e)
+        {
+            dashboardPage.RefreshCounts();
+        }
+
+        private void TasksPage_TasksChanged(object? sender, EventArgs e)
+        {
+            dashboardPage.RefreshCounts();
+        }
+
+        private void DncPage_DncChanged(object? sender, EventArgs e)
         {
             dashboardPage.RefreshCounts();
         }

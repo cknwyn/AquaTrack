@@ -23,6 +23,12 @@ namespace AquaTrack.Pages.Input_Forms
 
         private void siticoneButtonTaskConfirm_Click(object sender, EventArgs e)
         {
+            if (siticoneDTPDeadline.Value == null)
+            {
+                MessageBox.Show("Please select a valid deadline", "Error");
+                return;
+            }
+
             string content = siticoneTextAreaTask.Text;
             DateTime date = (DateTime)siticoneDTPDeadline.Value;
 

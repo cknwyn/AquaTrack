@@ -12,6 +12,6 @@ namespace AquaTrack.Models
         public DateTime SaleDate { get; set; }
         public decimal TotalAmount { get; set; }
         public int CustomerID { get; set; }
-        public ICollection<SaleItem> SaleItems { get; set; }
+        public List<SaleItem> SaleItems { get; set; }
     }
 }

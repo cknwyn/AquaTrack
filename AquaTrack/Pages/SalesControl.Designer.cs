@@ -98,6 +98,7 @@
             siticoneDataGridViewSale.ShowSampleData = true;
             siticoneDataGridViewSale.Size = new Size(488, 431);
             siticoneDataGridViewSale.TabIndex = 2;
+            siticoneDataGridViewSale.Load += SalesControl_Load;
             // 
             // siticoneDataGridViewSaleItems
             // 

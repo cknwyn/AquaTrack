@@ -42,6 +42,7 @@
             siticoneNavbarMain = new SiticoneNetCoreUI.SiticoneNavbar();
             siticoneContentPanelMain = new SiticoneNetCoreUI.SiticoneContentPanel();
             siticoneContentPanelDashboard = new SiticoneNetCoreUI.SiticoneContentPanel();
+            mySiticoneLicenseSettings1 = new SiticoneNetCoreUI.MySiticoneLicenseSettings();
             SuspendLayout();
             // 
             // siticoneAnimateForm
@@ -280,5 +281,6 @@
         private SiticoneNetCoreUI.SiticoneNavbar siticoneNavbarMain;
         private SiticoneNetCoreUI.SiticoneContentPanel siticoneContentPanelMain;
         private SiticoneNetCoreUI.SiticoneContentPanel siticoneContentPanelDashboard;
+        private SiticoneNetCoreUI.MySiticoneLicenseSettings mySiticoneLicenseSettings1;
     }
 }
