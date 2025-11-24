@@ -234,6 +234,7 @@
             siticoneBtnEditDnc.TooltipText = null;
             siticoneBtnEditDnc.UseAdvancedRendering = true;
             siticoneBtnEditDnc.UseParticles = false;
+            siticoneBtnEditDnc.Click += siticoneBtnEditDnc_Click;
             // 
             // siticoneBtnDeleteDnc
             // 

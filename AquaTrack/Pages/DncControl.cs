@@ -140,5 +140,44 @@ namespace AquaTrack.Pages
                 MessageBox.Show("Error deleting record: " + ex.Message, "Delete Record", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void siticoneBtnEditDnc_Click(object sender, EventArgs e)
+        {
+            // 1. Validate a single row is selected
+            if (siticoneDataGridViewDnc.GridView.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select exactly one damaged item record to edit.", "Edit Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var selectedRow = siticoneDataGridViewDnc.GridView.SelectedRows[0];
+
+            // 2. Safely get the selected Damaged object and its ID
+            // NOTE: LoadDncItems uses an anonymous type, so we must read the cell value if DataBoundItem is inaccessible.
+            int damagedIdToEdit = -1;
+
+            // Attempt to get ID from DataBoundItem if it was castable (best practice)
+            if (selectedRow.DataBoundItem is Models.Damaged selectedDnc)
+            {
+                damagedIdToEdit = selectedDnc.DamagedID;
+            }
+            // Fallback: Read the 'DamagedID' cell value from the anonymous object's column
+            else if (selectedRow.Cells["DamagedID"] != null &&
+                     int.TryParse(selectedRow.Cells["DamagedID"].Value?.ToString(), out int parsedId))
+            {
+                damagedIdToEdit = parsedId;
+            }
+
+            if (damagedIdToEdit <= 0)
+            {
+                MessageBox.Show("Could not determine Damaged ID for the selected record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // 3. Open DncForm, passing the DamagedID to indicate Edit Mode
+            DncForm dncForm = new DncForm(damagedIdToEdit); // Use new constructor
+            dncForm.DamagedControlRef = this;
+            dncForm.ShowDialog();
+        }
     }
 }

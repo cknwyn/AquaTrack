@@ -376,6 +376,7 @@
             siticoneButtonDamagedCancel.TooltipText = null;
             siticoneButtonDamagedCancel.UseAdvancedRendering = true;
             siticoneButtonDamagedCancel.UseParticles = false;
+            siticoneButtonDamagedCancel.Click += siticoneButtonDamagedCancel_Click;
             // 
             // siticoneDateTimePicker1
             // 

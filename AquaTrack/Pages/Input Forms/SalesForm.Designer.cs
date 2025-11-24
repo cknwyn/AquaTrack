@@ -276,7 +276,7 @@
             siticoneDropdownSalePaymentMethod.HoveredItemTextColor = Color.FromArgb(40, 40, 100);
             siticoneDropdownSalePaymentMethod.IsReadonly = false;
             siticoneDropdownSalePaymentMethod.ItemHeight = 30;
-            siticoneDropdownSalePaymentMethod.Items.AddRange(new string[] { "Cash", "Credit Card", "Debit Card", "GCash", "Maya", "" });
+            siticoneDropdownSalePaymentMethod.Items.AddRange(new string[] { "Cash", "Credit Card", "Debit Card", "GCash", "Maya" });
             siticoneDropdownSalePaymentMethod.Location = new Point(45, 291);
             siticoneDropdownSalePaymentMethod.MaxDropDownItems = 8;
             siticoneDropdownSalePaymentMethod.Name = "siticoneDropdownSalePaymentMethod";
@@ -603,7 +603,7 @@
             siticoneBtnEditSaleItem.IsReadOnly = false;
             siticoneBtnEditSaleItem.IsToggleButton = false;
             siticoneBtnEditSaleItem.IsToggled = false;
-            siticoneBtnEditSaleItem.Location = new Point(521, 489);
+            siticoneBtnEditSaleItem.Location = new Point(536, 489);
             siticoneBtnEditSaleItem.LongPressDurationMS = 1000;
             siticoneBtnEditSaleItem.Name = "siticoneBtnEditSaleItem";
             siticoneBtnEditSaleItem.NormalFontStyle = FontStyle.Regular;
@@ -678,7 +678,7 @@
             siticoneBtnDeleteSaleItem.IsReadOnly = false;
             siticoneBtnDeleteSaleItem.IsToggleButton = false;
             siticoneBtnDeleteSaleItem.IsToggled = false;
-            siticoneBtnDeleteSaleItem.Location = new Point(702, 489);
+            siticoneBtnDeleteSaleItem.Location = new Point(738, 489);
             siticoneBtnDeleteSaleItem.LongPressDurationMS = 1000;
             siticoneBtnDeleteSaleItem.Name = "siticoneBtnDeleteSaleItem";
             siticoneBtnDeleteSaleItem.NormalFontStyle = FontStyle.Regular;

@@ -35,6 +35,7 @@ namespace AquaTrack
             productsPage.ProductsChanged += ProductsPage_ProductsChanged;
             tasksPage.TasksChanged += TasksPage_TasksChanged;
             dncPage.DncChanged += DncPage_DncChanged;
+            salesPage.SalesChanged += SalesPage_SalesChanged;
 
             this.Load += MainForm_Load;
             siticoneContentPanelMain.AfterNavigate += siticoneContentPanelMain_AfterNavigate;
@@ -60,6 +61,11 @@ namespace AquaTrack
         }
 
         private void DncPage_DncChanged(object? sender, EventArgs e)
+        {
+            dashboardPage.RefreshCounts();
+        }
+
+        private void SalesPage_SalesChanged(object? sender, EventArgs e)
         {
             dashboardPage.RefreshCounts();
         }

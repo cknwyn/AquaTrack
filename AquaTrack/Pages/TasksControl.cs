@@ -246,5 +246,32 @@ namespace AquaTrack.Pages
                 MessageBox.Show("Error deleting tasks: " + ex.Message, "Delete Task", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void siticoneBtnEditTask_Click(object sender, EventArgs e)
+        {
+            // validate a single row is selected
+            if (_grid.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select exactly one task record to edit.", "Edit Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var selectedRow = _grid.SelectedRows[0];
+
+            // safely get the selected TaskNotes object and its ID
+            if (selectedRow.DataBoundItem is Models.TaskNotes selectedTask)
+            {
+                int taskIdToEdit = selectedTask.TasknotesID;
+
+                // Open TasksListForm, passing the TasknotesID to indicate Edit Mode
+                TasksListForm tasksListForm = new TasksListForm(taskIdToEdit); // Use new constructor
+                tasksListForm.TasksControlRef = this;
+                tasksListForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Could not identify the selected task record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

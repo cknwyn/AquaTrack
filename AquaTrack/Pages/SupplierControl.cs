@@ -132,7 +132,29 @@ namespace AquaTrack.Pages
 
         private void siticoneBtnEditSupplier_Click(object sender, EventArgs e)
         {
+            // 1. Validate a single row is selected
+            if (siticoneDataGridViewSupplier.GridView.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select exactly one supplier record to edit.", "Edit Supplier", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            var selectedRow = siticoneDataGridViewSupplier.GridView.SelectedRows[0];
+
+            // 2. Safely get the selected Supplier object and its ID
+            if (selectedRow.DataBoundItem is Models.Supplier selectedSupplier)
+            {
+                int supplierIdToEdit = selectedSupplier.SupplierID;
+
+                // 3. Open SuppliersForm, passing the SupplierID to indicate Edit Mode
+                SuppliersForm suppliersForm = new SuppliersForm(supplierIdToEdit); // Use new constructor
+                suppliersForm.SupplierControlRef = this;
+                suppliersForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Could not identify the selected supplier record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

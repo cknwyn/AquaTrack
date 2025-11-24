@@ -408,6 +408,7 @@
             Controls.Add(siticoneTextBoxCustomerName);
             Controls.Add(siticoneLabelCustomerEmail);
             Name = "CustomersForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CustomersForm";
             ResumeLayout(false);
         }

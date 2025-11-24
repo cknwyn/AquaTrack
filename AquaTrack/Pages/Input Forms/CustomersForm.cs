@@ -16,14 +16,28 @@ namespace AquaTrack.Pages.Input_Forms
     {
         private InventoryContext _context;
         public CustomersControl CustomerControlRef { get; set; }
-        public CustomersForm()
+        private int _customerIdToEdit = 0;
+        public CustomersForm() : this(0) { }
+        public CustomersForm(int customerId)
         {
             InitializeComponent();
+
+            _customerIdToEdit = customerId;
+
+            if (_customerIdToEdit > 0)
+            {
+                this.Text = "Edit Existing Customer";
+                LoadCustomerData(_customerIdToEdit);
+            }
+            else
+            {
+                this.Text = "Add New Customer";
+            }
         }
 
-        private void siticoneButtonCustomerConfirm_Click(object sender, EventArgs e)
+        private async void siticoneButtonCustomerConfirm_Click(object sender, EventArgs e)
         {
-            if (siticoneTextBoxCustomerName.Text == "")
+            if (string.IsNullOrWhiteSpace(siticoneTextBoxCustomerName.Text))
             {
                 MessageBox.Show("Customer name cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -37,37 +51,96 @@ namespace AquaTrack.Pages.Input_Forms
                 MessageBox.Show("Customer Contact Number must be valid", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            // end of validation
 
             string customerName = siticoneTextBoxCustomerName.Text;
             string customerEmail = siticoneTextBoxCustomerEmail.Text;
             string customerNumber = siticoneTextBoxCustomerContactNumber.Text;
 
-            try
-                {
-                    var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
-                    optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db");
-                    using (var context = new InventoryContext(optionsBuilder.Options))
-                    {
-                        var newCustomer = new Models.Customer
-                        {
-                            Name = customerName,
-                            Email = customerEmail,
-                            ContactNumber = customerNumber
-                        };
+            var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
+            optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db");
 
-                        context.Customers.Add(newCustomer);
-                        context.SaveChanges();
-                        CustomerControlRef?.refreshCustomersList();
+            try
+            {
+                using (var context = new InventoryContext(optionsBuilder.Options))
+                {
+                    Models.Customer customerToSave;
+                    string successMessage;
+
+                    if (_customerIdToEdit > 0)
+                    {
+                        // === EDIT MODE ===
+                        customerToSave = await context.Customers.FindAsync(_customerIdToEdit);
+                        if (customerToSave == null) throw new Exception("Customer not found for update.");
+                        successMessage = "updated";
                     }
-                    MessageBox.Show("Supplier added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                    {
+                        // === ADD MODE ===
+                        // Check for unique name only if ADDING
+                        var existingCustomer = await context.Customers
+                            .FirstOrDefaultAsync(c => c.Name == customerName);
+                        if (existingCustomer != null)
+                        {
+                            MessageBox.Show("A customer with this name already exists.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        customerToSave = new Models.Customer();
+                        context.Customers.Add(customerToSave);
+                        successMessage = "added";
+                    }
+
+                    // --- Update Properties (Applies to both Add and Edit) ---
+                    customerToSave.Name = customerName;
+                    customerToSave.Email = customerEmail;
+                    customerToSave.ContactNumber = customerNumber;
+
+                    await context.SaveChangesAsync();
+                    CustomerControlRef?.refreshCustomersList();
+
+                    MessageBox.Show($"Customer successfully {successMessage}!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while saving the customer: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // MessageBox.Show(ex.InnerException?.Message ?? ex.Message); // Re-enable for debugging
+            }
+        }
+
+        private async void LoadCustomerData(int customerId)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
+            var options = optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db").Options;
+
+            using (var context = new InventoryContext(options))
+            {
+                try
+                {
+                    var customer = await context.Customers.FindAsync(customerId);
+
+                    if (customer == null)
+                    {
+                        MessageBox.Show("Customer not found.", "Error");
+                        this.Close();
+                        return;
+                    }
+
+                    siticoneTextBoxCustomerName.Text = customer.Name;
+                    siticoneTextBoxCustomerEmail.Text = customer.Email;
+                    siticoneTextBoxCustomerContactNumber.Text = customer.ContactNumber;
+
+                    // Name field should be read-only if editing, as name is often a key identifier.
+                    siticoneTextBoxCustomerName.Enabled = false;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred while adding the supplier: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    MessageBox.Show(ex.InnerException?.Message ?? ex.Message);
+                    MessageBox.Show("Failed to load customer data: " + ex.Message, "Error");
                 }
             }
+        }
 
         private void siticoneButtonCustomerCancel_Click(object sender, EventArgs e)
         {

@@ -129,5 +129,33 @@ namespace AquaTrack.Pages
                 MessageBox.Show("Error deleting customer: " + ex.Message, "Delete customer", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void siticoneBtnEditCustomer_Click(object sender, EventArgs e)
+        {
+            // 1. Validate a single row is selected
+            if (siticoneDataGridViewCustomers.GridView.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select exactly one customer record to edit.", "Edit Customer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var selectedRow = siticoneDataGridViewCustomers.GridView.SelectedRows[0];
+
+            // 2. Safely get the selected Customer object and its ID
+            if (selectedRow.DataBoundItem is Models.Customer selectedCustomer)
+            {
+                int customerIdToEdit = selectedCustomer.CustomerID;
+
+                // 3. Open CustomersForm, passing the CustomerID to indicate Edit Mode
+                CustomersForm customersForm = new CustomersForm(customerIdToEdit); // Use new constructor
+                customersForm.CustomerControlRef = this;
+                customersForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Could not identify the selected customer record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }

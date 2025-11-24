@@ -251,6 +251,7 @@
             siticoneBtnEditTask.TooltipText = null;
             siticoneBtnEditTask.UseAdvancedRendering = true;
             siticoneBtnEditTask.UseParticles = false;
+            siticoneBtnEditTask.Click += siticoneBtnEditTask_Click;
             // 
             // siticoneBtnAddTask
             // 

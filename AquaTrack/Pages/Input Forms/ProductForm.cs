@@ -16,12 +16,25 @@ namespace AquaTrack.Pages.Input_Forms
     public partial class ProductForm : Form
     {
         public ProductsControl ProductControlRef { get; set; }
-        public ProductForm()
+        private int _productIdToEdit = 0;
+
+        public ProductForm() : this(0) { }
+        public ProductForm(int productId)
         {
             InitializeComponent();
+            _productIdToEdit = productId;
+
+            if (_productIdToEdit > 0)
+            {
+                this.Text = "Edit Existing Product";
+            }
+            else
+            {
+                this.Text = "Add New Product";
+            }
         }
 
-        private void siticoneButtonProductConfirm_Click(object sender, EventArgs e)
+        private async void siticoneButtonProductConfirm_Click(object sender, EventArgs e)
         {
             // check if necessary fields are filled
             if (string.IsNullOrWhiteSpace(siticoneTextBoxProductName.Text) ||
@@ -53,20 +66,6 @@ namespace AquaTrack.Pages.Input_Forms
                 }
             }
 
-            using (var context = new Data.InventoryContext(
-                new DbContextOptionsBuilder<Data.InventoryContext>()
-                .UseSqlite("Data Source=InventoryAndSales.db")
-                .Options))
-            {
-                var existingProduct = context.Products
-                    .FirstOrDefault(p => p.Name == siticoneTextBoxProductName.Text);
-                if (existingProduct != null)
-                {
-                    MessageBox.Show("A product with this name already exists. Please choose a different name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
             string name = siticoneTextBoxProductName.Text;
             string category = siticoneDropdownProductCategory.SelectedItem.ToString();
             decimal price = decimal.Parse(siticoneUpDownProductPrice.Text);
@@ -82,54 +81,86 @@ namespace AquaTrack.Pages.Input_Forms
                 MessageBox.Show("Please select a valid supplier.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            // --- Start Save/Update Logic ---
+            var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
+            var options = optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db").Options;
+
             try
             {
-                using (var context = new Data.InventoryContext(
-                    new DbContextOptionsBuilder<Data.InventoryContext>()
-                    .UseSqlite("Data Source=InventoryAndSales.db")
-                    .Options))
+                using (var context = new InventoryContext(options))
                 {
-                    // Create and save product based on category
-                    if (siticoneDropdownProductCategory.SelectedItem.ToString() == "Fish")
+                    if (_productIdToEdit == 0)
                     {
-                        var newFish = new Models.Fish
-                        {
-                            Name = name,
-                            Price = price,
-                            Category = category,
-                            StockQuantity = stockQuantity,
-                            SupplierID = supplierId,
-                            DateAdded = DateTime.Now,
-                            Species = siticoneTextBoxSpeciesName.Text,
-                            Age = int.Parse(siticoneUpDownFishAge.Text),
-                            WaterEnvironment = siticoneDropdownWaterEnvironment.SelectedItem.ToString()
-                        };
-                        context.Products.Add(newFish);
+                        // === ADD NEW PRODUCT LOGIC (Modified to check uniqueness for NEW products only) ===
+                        var existingProduct = await context.Products
+                            .FirstOrDefaultAsync(p => p.Name == name);
 
-                        MessageBox.Show("Fish added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        if (existingProduct != null)
+                        {
+                            MessageBox.Show("A product with this name already exists. Please choose a different name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
-                    else if (siticoneDropdownProductCategory.SelectedItem.ToString() == "Equipment")
+
+                    Products productToSave;
+                    string successMessage;
+
+                    if (_productIdToEdit > 0)
                     {
-                        var newEquipment = new Models.Equipment
-                        {
-                            Name = name,
-                            Price = price,
-                            Category = category,
-                            StockQuantity = stockQuantity,
-                            SupplierID = supplierId,
-                            DateAdded = DateTime.Now,
-                            Brand = siticoneTextBoxEquipmentBrand.Text,
-                            Model = siticoneTextBoxEquipmentModel.Text,
-                            EquipmentType = siticoneDropdownEquipmentType.SelectedItem.ToString()
-                        };
-                        context.Products.Add(newEquipment);
+                        // === EDIT MODE: Load and Update ===
+                        productToSave = await context.Products.FindAsync(_productIdToEdit);
+                        if (productToSave == null) throw new Exception("Product not found for editing.");
 
-                        MessageBox.Show("Equipment added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        successMessage = "updated";
                     }
-                    context.SaveChanges();
+                    else
+                    {
+                        // === ADD MODE: Create New Instance ===
+                        productToSave = category == "Fish" ? new Fish() : (Products)new Equipment();
+                        context.Products.Add(productToSave); // Add only if new
+                        successMessage = "added";
+                    }
+
+                    // --- Update Base Product Properties ---
+                    productToSave.Name = name;
+                    productToSave.Price = price;
+                    productToSave.Category = category;
+                    productToSave.StockQuantity = stockQuantity;
+                    productToSave.SupplierID = supplierId;
+
+                    // If new, set DateAdded; if editing, leave it (or update if needed)
+                    if (_productIdToEdit == 0)
+                    {
+                        productToSave.DateAdded = DateTime.Now;
+                    }
+
+                    // --- Update Derived (Fish/Equipment) Properties ---
+                    if (category == "Fish" && productToSave is Fish fishToSave)
+                    {
+                        fishToSave.Species = siticoneTextBoxSpeciesName.Text;
+                        fishToSave.Age = int.Parse(siticoneUpDownFishAge.Text);
+                        fishToSave.WaterEnvironment = siticoneDropdownWaterEnvironment.SelectedItem.ToString();
+
+                        // If the product was switched from Equipment to Fish (or vice versa), 
+                        // you would normally need to handle the deletion of the old derived record (Equipment)
+                        // and creation of the new derived record (Fish). Since EF Core handles derived types 
+                        // automatically on the single 'Products' DbSet, we rely on the object type being correct.
+                    }
+                    else if (category == "Equipment" && productToSave is Equipment equipmentToSave)
+                    {
+                        equipmentToSave.Brand = siticoneTextBoxEquipmentBrand.Text;
+                        equipmentToSave.Model = siticoneTextBoxEquipmentModel.Text;
+                        equipmentToSave.EquipmentType = siticoneDropdownEquipmentType.SelectedItem.ToString();
+                    }
+
+                    // Save changes (handles both Insert and Update)
+                    await context.SaveChangesAsync();
+
                     ProductControlRef?.refreshProductsList();
+
+                    MessageBox.Show($"Product successfully {successMessage}!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -163,6 +194,11 @@ namespace AquaTrack.Pages.Input_Forms
                 siticoneDropdownProductSupplier.DataSource = suppliers;
                 siticoneDropdownProductSupplier.DisplayMember = "Name";
                 siticoneDropdownProductSupplier.ValueMember = "SupplierID";
+            }
+
+            if (_productIdToEdit > 0)
+            {
+                LoadProductData(_productIdToEdit);
             }
         }
 
@@ -240,6 +276,52 @@ namespace AquaTrack.Pages.Input_Forms
             foreach (var type in equipmentTypes)
             {
                 siticoneDropdownEquipmentType.Items.Add(type);
+            }
+        }
+
+        private async void LoadProductData(int productId)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
+            var options = optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db").Options;
+
+            using (var ctx = new InventoryContext(options))
+            {
+                // Load the base product, including derived types (Fish/Equipment) if possible
+                var product = await ctx.Products.FindAsync(productId);
+
+                if (product == null)
+                {
+                    MessageBox.Show("Product not found.", "Error");
+                    this.Close();
+                    return;
+                }
+
+                // Populate base fields
+                siticoneTextBoxProductName.Text = product.Name;
+                siticoneUpDownProductPrice.Text = product.Price.ToString();
+                siticoneUpDownProductQuantity.Text = product.StockQuantity.ToString();
+                siticoneDropdownProductSupplier.SelectedValue = product.SupplierID;
+
+                // Set category dropdown and trigger change event to enable/disable fields
+                siticoneDropdownProductCategory.SelectedItem = product.Category;
+                siticoneProductDropdownProductCategory_SelectedIndexChanged(null, null);
+
+                // Populate specific fields based on category
+                if (product.Category == "Fish" && product is Fish fish)
+                {
+                    siticoneTextBoxSpeciesName.Text = fish.Species;
+                    siticoneUpDownFishAge.Text = fish.Age.ToString();
+                    siticoneDropdownWaterEnvironment.SelectedItem = fish.WaterEnvironment;
+                }
+                else if (product.Category == "Equipment" && product is Equipment equipment)
+                {
+                    siticoneTextBoxEquipmentBrand.Text = equipment.Brand;
+                    siticoneTextBoxEquipmentModel.Text = equipment.Model;
+                    siticoneDropdownEquipmentType.SelectedItem = equipment.EquipmentType;
+                }
+
+                // Disable Name field during edit to prevent foreign key issues
+                siticoneTextBoxProductName.Enabled = false;
             }
         }
 

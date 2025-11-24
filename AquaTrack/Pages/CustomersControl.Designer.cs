@@ -234,6 +234,7 @@
             siticoneBtnEditCustomer.TooltipText = null;
             siticoneBtnEditCustomer.UseAdvancedRendering = true;
             siticoneBtnEditCustomer.UseParticles = false;
+            siticoneBtnEditCustomer.Click += siticoneBtnEditCustomer_Click;
             // 
             // siticoneBtnAddCustomer
             // 

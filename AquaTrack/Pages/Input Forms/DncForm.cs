@@ -20,9 +20,23 @@ namespace AquaTrack.Pages.Input_Forms
         public InventoryContext _context;
         public DncControl? DamagedControlRef { get; set; }
         public ProductsControl? ProductsControlRef { get; set; }
-        public DncForm()
+        private int _damagedIdToEdit = 0;
+        public DncForm() : this(0) { }
+        public DncForm(int damagedId)
         {
             InitializeComponent();
+
+            _damagedIdToEdit = damagedId;
+
+            if (_damagedIdToEdit > 0)
+            {
+                this.Text = "Edit Damaged Record";
+                LoadDncData(_damagedIdToEdit);
+            }
+            else
+            {
+                this.Text = "Report Damaged Item";
+            }
         }
 
 
@@ -36,7 +50,7 @@ namespace AquaTrack.Pages.Input_Forms
                 _context = new InventoryContext(optionsBuilder.Options);
             }
 
-            // Resolve selected product id from dropdown (works with ValueMember = "ProductsID")
+            // Resolve selected product id from dropdown
             int productId = -1;
             try
             {
@@ -97,26 +111,33 @@ namespace AquaTrack.Pages.Input_Forms
             }
 
             // Call the async helper and handle result/feedback
-            _ = AddDamagedItemHandlerAsync(productId, damagedQty);
+            _ = SaveDamagedItemHandlerAsync(productId, damagedQty);
         }
 
-        private async Task AddDamagedItemHandlerAsync(int productId, int damagedQty)
+        private async Task SaveDamagedItemHandlerAsync(int productId, int damagedQty)
         {
+            var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
+            optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db");
+
             try
             {
-                await AddDamagedItem(productId, damagedQty);
-                MessageBox.Show("Damaged item recorded and stock updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (var ctx = new InventoryContext(optionsBuilder.Options))
+                {
+                    await SaveDamagedItem(ctx, productId, damagedQty);
 
-                // Optionally refresh any parent lists / controls here.
-                ProductsControlRef?.refreshProductsList();
-                DamagedControlRef?.RefreshDncItems();
+                    MessageBox.Show($"Damaged item record successfully {(_damagedIdToEdit > 0 ? "updated" : "recorded")} and stock adjusted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                this.Close();
+                    // Refresh parent lists
+                    ProductsControlRef?.refreshProductsList();
+                    DamagedControlRef?.RefreshDncItems();
+
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to record damaged item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show(ex.InnerException?.Message);
+                MessageBox.Show("Failed to save damaged item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // MessageBox.Show(ex.InnerException?.Message); // Re-enable for debugging
             }
         }
 
@@ -138,28 +159,106 @@ namespace AquaTrack.Pages.Input_Forms
             }
         }
 
-        public async Task AddDamagedItem(int productId, int damagedQty)
+        public async Task SaveDamagedItem(InventoryContext ctx, int productId, int damagedQty)
         {
-            var product = await _context.Products
-                .FirstOrDefaultAsync(p => p.ProductsID == productId);
-
-            if (product == null) return;
-
-            if (product.StockQuantity < damagedQty) return;
-
-            product.StockQuantity = product.StockQuantity - damagedQty;
-
-            var damaged = new Damaged
+            // The core stock manipulation logic is sensitive. For editing, we prevent major changes.
+            if (_damagedIdToEdit > 0)
             {
-                ProductID = product.ProductsID,
-                DamagedName = product.Name,
-                Quantity = damagedQty,
-                DateReported = (DateTime) siticoneDateTimePicker1.Value,
-            };
+                // === EDIT MODE ===
+                var damagedRecord = await ctx.DamagedItems.FindAsync(_damagedIdToEdit);
+                if (damagedRecord == null) throw new Exception("Record not found for update.");
 
-            _context.DamagedItems.Add(damaged);
-            await _context.SaveChangesAsync();
-            ProductsControlRef?.refreshProductsList();
+                if (damagedRecord.Quantity != damagedQty || damagedRecord.ProductID != productId)
+                {
+                    throw new Exception("Cannot change Product or Quantity when editing DNC records. Please delete and re-add.");
+                }
+
+                // Update only the DateReported (or other non-stock fields)
+                damagedRecord.DateReported = (DateTime)siticoneDateTimePicker1.Value;
+
+                // Ensure entity is tracked
+                ctx.DamagedItems.Update(damagedRecord);
+            }
+            else
+            {
+                // === ADD MODE (Original AddDamagedItem logic) ===
+                var product = await ctx.Products.FirstOrDefaultAsync(p => p.ProductsID == productId);
+
+                if (product == null) throw new Exception("Product not found in inventory.");
+
+                if (product.StockQuantity < damagedQty)
+                {
+                    throw new Exception($"Insufficient stock ({product.StockQuantity} available) to report {damagedQty} damaged items.");
+                }
+
+                // Deduct stock
+                product.StockQuantity -= damagedQty;
+
+                // Create new record
+                var damaged = new Damaged
+                {
+                    ProductID = product.ProductsID,
+                    DamagedName = product.Name,
+                    Quantity = damagedQty,
+                    DateReported = (DateTime)siticoneDateTimePicker1.Value,
+                };
+                ctx.DamagedItems.Add(damaged);
+
+                // Ensure product update is tracked
+                ctx.Products.Update(product);
+            }
+
+            await ctx.SaveChangesAsync();
+        }
+
+        private async void LoadDncData(int damagedId)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
+            var options = optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db").Options;
+
+            using (var ctx = new InventoryContext(options))
+            {
+                try
+                {
+                    var damagedRecord = await ctx.DamagedItems.FindAsync(damagedId);
+
+                    if (damagedRecord == null)
+                    {
+                        MessageBox.Show("Damaged record not found.", "Error");
+                        this.Close();
+                        return;
+                    }
+
+                    // Populate fields
+                    // Date time picker
+                    siticoneDateTimePicker1.Value = damagedRecord.DateReported;
+
+                    // Quantity (Assuming siticoneUpDownDamagedQuantity is the UpDown control)
+                    var numericControl = Controls.Find("siticoneUpDownDamagedQuantity", true).FirstOrDefault() as SiticoneNetCoreUI.SiticoneUpDown;
+                    if (numericControl != null)
+                    {
+                        numericControl.Value = damagedRecord.Quantity;
+                    }
+
+                    // Load the full list of products into the dropdown (needed before setting SelectedValue)
+                    siticoneDropdownDamagedProduct_Click(null, null);
+
+                    // Set the product dropdown to the stored ProductID
+                    siticoneDropdownDamagedProduct.SelectedValue = damagedRecord.ProductID;
+
+                    // Disable changing the product item during edit to keep stock deduction simpler
+                    siticoneDropdownDamagedProduct.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load damaged record data: " + ex.Message, "Error");
+                }
+            }
+        }
+
+        private void siticoneButtonDamagedCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

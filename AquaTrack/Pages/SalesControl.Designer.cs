@@ -187,6 +187,7 @@
             siticoneBtnDeleteSale.TooltipText = null;
             siticoneBtnDeleteSale.UseAdvancedRendering = true;
             siticoneBtnDeleteSale.UseParticles = false;
+            siticoneBtnDeleteSale.Click += siticoneBtnDeleteSale_Click;
             // 
             // siticoneBtnEditSale
             // 
@@ -262,6 +263,7 @@
             siticoneBtnEditSale.TooltipText = null;
             siticoneBtnEditSale.UseAdvancedRendering = true;
             siticoneBtnEditSale.UseParticles = false;
+            siticoneBtnEditSale.Click += siticoneBtnEditSale_Click;
             // 
             // siticoneBtnAddSale
             // 

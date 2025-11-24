@@ -34,10 +34,10 @@ namespace AquaTrack.Pages
         }
 
         // Public method to refresh the dashboard counters (safe for calling from any thread)
-        public void RefreshCounts()
+        public async void RefreshCounts()
         {
             // Query the DB and set the label on the UI thread
-            Action work = () =>
+            Action work = async () =>
             {
                 try
                 {
@@ -49,6 +49,8 @@ namespace AquaTrack.Pages
                         siticoneLabelProductsValue.Text = context.Products.Count().ToString();
                         siticoneLabelDnCValues.Text = context.DamagedItems.Count().ToString();
                         siticoneLabelTasksValue.Text = context.TaskNotes.Count().ToString();
+                        decimal overallTotal = await context.Sales.SumAsync(s => s.TotalAmount);
+                        siticoneLabelTotalSalesValue.Text = "₱" + overallTotal.ToString();
                     }
                 }
                 catch (Exception ex)
@@ -88,6 +90,15 @@ namespace AquaTrack.Pages
         protected void OnDncChanged()
         {
             DncChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    public partial class SalesControl
+    {
+        public event EventHandler? SalesChanged;
+        protected void OnSalesChanged()
+        {
+            SalesChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
