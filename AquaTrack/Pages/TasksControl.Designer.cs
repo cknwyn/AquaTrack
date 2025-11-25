@@ -98,7 +98,7 @@
             siticoneDataGridViewTasks.LockCellEditing = false;
             siticoneDataGridViewTasks.Name = "siticoneDataGridViewTasks";
             siticoneDataGridViewTasks.ShowSampleData = true;
-            siticoneDataGridViewTasks.Size = new Size(1026, 428);
+            siticoneDataGridViewTasks.Size = new Size(1026, 280);
             siticoneDataGridViewTasks.TabIndex = 7;
             siticoneDataGridViewTasks.Load += TasksControl_Load;
             // 
@@ -335,14 +335,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
             Controls.Add(siticoneBtnDeleteTask);
             Controls.Add(siticoneBtnEditTask);
             Controls.Add(siticoneBtnAddTask);
             Controls.Add(siticoneDataGridViewTasks);
             Controls.Add(siticoneButtonTextboxSearchTasks);
             Name = "TasksControl";
-            Size = new Size(1032, 478);
+            Size = new Size(1032, 331);
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewTasks).EndInit();
             ResumeLayout(false);
         }

@@ -92,13 +92,13 @@
             siticoneDataGridViewSale.AutoScroll = true;
             siticoneDataGridViewSale.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             siticoneDataGridViewSale.BackColor = Color.FromArgb(240, 248, 255);
-            siticoneDataGridViewSale.CellFont = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            siticoneDataGridViewSale.CellFont = new Font("Segoe UI", 9.5F);
             siticoneDataGridViewSale.GridTheme = SiticoneNetCoreUI.GridTheme.Blue;
             siticoneDataGridViewSale.HeaderFont = new Font("Verdana", 9.75F, FontStyle.Bold);
             siticoneDataGridViewSale.Location = new Point(3, 47);
             siticoneDataGridViewSale.Name = "siticoneDataGridViewSale";
             siticoneDataGridViewSale.ShowSampleData = true;
-            siticoneDataGridViewSale.Size = new Size(488, 428);
+            siticoneDataGridViewSale.Size = new Size(488, 283);
             siticoneDataGridViewSale.TabIndex = 2;
             siticoneDataGridViewSale.Load += SalesControl_Load;
             // 
@@ -107,13 +107,13 @@
             siticoneDataGridViewSaleItems.AutoScroll = true;
             siticoneDataGridViewSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             siticoneDataGridViewSaleItems.BackColor = Color.FromArgb(240, 248, 255);
-            siticoneDataGridViewSaleItems.CellFont = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            siticoneDataGridViewSaleItems.CellFont = new Font("Segoe UI", 9.5F);
             siticoneDataGridViewSaleItems.GridTheme = SiticoneNetCoreUI.GridTheme.Blue;
             siticoneDataGridViewSaleItems.HeaderFont = new Font("Verdana", 9.75F, FontStyle.Bold);
-            siticoneDataGridViewSaleItems.Location = new Point(507, 47);
+            siticoneDataGridViewSaleItems.Location = new Point(527, 47);
             siticoneDataGridViewSaleItems.Name = "siticoneDataGridViewSaleItems";
             siticoneDataGridViewSaleItems.ShowSampleData = true;
-            siticoneDataGridViewSaleItems.Size = new Size(505, 428);
+            siticoneDataGridViewSaleItems.Size = new Size(505, 283);
             siticoneDataGridViewSaleItems.TabIndex = 3;
             // 
             // siticoneBtnDeleteSale
@@ -348,6 +348,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             Controls.Add(siticoneBtnDeleteSale);
             Controls.Add(siticoneBtnEditSale);
             Controls.Add(siticoneBtnAddSale);
@@ -355,7 +356,7 @@
             Controls.Add(siticoneDataGridViewSale);
             Controls.Add(siticoneButtonTextboxSearchSales);
             Name = "SalesControl";
-            Size = new Size(1032, 478);
+            Size = new Size(1032, 335);
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewSale).EndInit();
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewSaleItems).EndInit();
             ResumeLayout(false);

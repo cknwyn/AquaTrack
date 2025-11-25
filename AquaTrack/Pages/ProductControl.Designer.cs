@@ -95,10 +95,10 @@
             siticoneDataGridViewProducts.CellFont = new Font("Segoe UI", 9.5F);
             siticoneDataGridViewProducts.GridTheme = SiticoneNetCoreUI.GridTheme.Blue;
             siticoneDataGridViewProducts.HeaderFont = new Font("Verdana", 9.75F, FontStyle.Bold);
-            siticoneDataGridViewProducts.Location = new Point(0, 47);
+            siticoneDataGridViewProducts.Location = new Point(3, 44);
             siticoneDataGridViewProducts.Name = "siticoneDataGridViewProducts";
             siticoneDataGridViewProducts.ShowSampleData = true;
-            siticoneDataGridViewProducts.Size = new Size(1032, 431);
+            siticoneDataGridViewProducts.Size = new Size(1012, 280);
             siticoneDataGridViewProducts.TabIndex = 1;
             // 
             // siticoneBtnAddProduct
@@ -149,7 +149,7 @@
             siticoneBtnAddProduct.IsReadOnly = false;
             siticoneBtnAddProduct.IsToggleButton = false;
             siticoneBtnAddProduct.IsToggled = false;
-            siticoneBtnAddProduct.Location = new Point(525, 3);
+            siticoneBtnAddProduct.Location = new Point(507, 3);
             siticoneBtnAddProduct.LongPressDurationMS = 1000;
             siticoneBtnAddProduct.Name = "siticoneBtnAddProduct";
             siticoneBtnAddProduct.NormalFontStyle = FontStyle.Regular;
@@ -225,7 +225,7 @@
             siticoneBtnEditProduct.IsReadOnly = false;
             siticoneBtnEditProduct.IsToggleButton = false;
             siticoneBtnEditProduct.IsToggled = false;
-            siticoneBtnEditProduct.Location = new Point(695, 3);
+            siticoneBtnEditProduct.Location = new Point(677, 3);
             siticoneBtnEditProduct.LongPressDurationMS = 1000;
             siticoneBtnEditProduct.Name = "siticoneBtnEditProduct";
             siticoneBtnEditProduct.NormalFontStyle = FontStyle.Regular;
@@ -301,7 +301,7 @@
             siticoneBtnDeleteProduct.IsReadOnly = false;
             siticoneBtnDeleteProduct.IsToggleButton = false;
             siticoneBtnDeleteProduct.IsToggled = false;
-            siticoneBtnDeleteProduct.Location = new Point(865, 3);
+            siticoneBtnDeleteProduct.Location = new Point(847, 3);
             siticoneBtnDeleteProduct.LongPressDurationMS = 1000;
             siticoneBtnDeleteProduct.Name = "siticoneBtnDeleteProduct";
             siticoneBtnDeleteProduct.NormalFontStyle = FontStyle.Regular;
@@ -377,7 +377,7 @@
             Controls.Add(siticoneDataGridViewProducts);
             Controls.Add(siticoneButtonTextboxSearchProducts);
             Name = "ProductsControl";
-            Size = new Size(1032, 478);
+            Size = new Size(1015, 326);
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewProducts).EndInit();
             ResumeLayout(false);
         }

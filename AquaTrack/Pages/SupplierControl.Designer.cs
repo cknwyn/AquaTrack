@@ -325,7 +325,7 @@
             siticoneDataGridViewSupplier.Location = new Point(3, 49);
             siticoneDataGridViewSupplier.Name = "siticoneDataGridViewSupplier";
             siticoneDataGridViewSupplier.ShowSampleData = true;
-            siticoneDataGridViewSupplier.Size = new Size(1009, 426);
+            siticoneDataGridViewSupplier.Size = new Size(1026, 283);
             siticoneDataGridViewSupplier.TabIndex = 6;
             // 
             // SupplierControl
@@ -338,7 +338,7 @@
             Controls.Add(siticoneBtnAddSupplier);
             Controls.Add(siticoneButtonTextboxSearchSupplier);
             Name = "SupplierControl";
-            Size = new Size(1032, 478);
+            Size = new Size(1032, 337);
             Load += SupplierControl_Load;
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewSupplier).EndInit();
             ResumeLayout(false);

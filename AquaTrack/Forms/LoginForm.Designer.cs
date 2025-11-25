@@ -207,7 +207,7 @@
             siticoneBASignIn.TextShadowColor = Color.FromArgb(100, 0, 0, 0);
             siticoneBASignIn.TextShadowOffsetX = 1;
             siticoneBASignIn.TextShadowOffsetY = 1;
-            siticoneBASignIn.Click += this.siticoneBASignIn_Click;
+            siticoneBASignIn.Click += siticoneBASignIn_Click;
             // 
             // siticoneTBAPassword
             // 
@@ -263,7 +263,7 @@
             siticoneTBAUsername.ReadOnlyColors.BorderColor = Color.FromArgb(200, 200, 200);
             siticoneTBAUsername.ReadOnlyColors.PlaceholderColor = Color.FromArgb(150, 150, 150);
             siticoneTBAUsername.ReadOnlyColors.TextColor = Color.FromArgb(100, 100, 100);
-            siticoneTBAUsername.Size = new Size(286, 42);
+            siticoneTBAUsername.Size = new Size(296, 45);
             siticoneTBAUsername.TabIndex = 5;
             siticoneTBAUsername.TextColor = Color.FromArgb(30, 30, 30);
             siticoneTBAUsername.TextContent = "";
@@ -300,7 +300,7 @@
             siticoneLabelLogin.ForeColor = Color.White;
             siticoneLabelLogin.Location = new Point(55, 100);
             siticoneLabelLogin.Name = "siticoneLabelLogin";
-            siticoneLabelLogin.Size = new Size(87, 40);
+            siticoneLabelLogin.Size = new Size(107, 40);
             siticoneLabelLogin.TabIndex = 2;
             siticoneLabelLogin.Text = "Login";
             // 
@@ -311,7 +311,7 @@
             siticoneLabelLogo2.ForeColor = Color.White;
             siticoneLabelLogo2.Location = new Point(201, 37);
             siticoneLabelLogo2.Name = "siticoneLabelLogo2";
-            siticoneLabelLogo2.Size = new Size(89, 40);
+            siticoneLabelLogo2.Size = new Size(103, 40);
             siticoneLabelLogo2.TabIndex = 1;
             siticoneLabelLogo2.Text = "Track";
             // 
@@ -320,9 +320,9 @@
             siticoneLabelLogo.BackColor = Color.Transparent;
             siticoneLabelLogo.Font = new Font("Verdana", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             siticoneLabelLogo.ForeColor = Color.FromArgb(148, 205, 255);
-            siticoneLabelLogo.Location = new Point(129, 37);
+            siticoneLabelLogo.Location = new Point(123, 37);
             siticoneLabelLogo.Name = "siticoneLabelLogo";
-            siticoneLabelLogo.Size = new Size(87, 40);
+            siticoneLabelLogo.Size = new Size(93, 40);
             siticoneLabelLogo.TabIndex = 0;
             siticoneLabelLogo.Text = "Aqua";
             // 

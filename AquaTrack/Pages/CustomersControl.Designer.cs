@@ -133,7 +133,7 @@
             siticoneBtnDeleteCustomer.IsReadOnly = false;
             siticoneBtnDeleteCustomer.IsToggleButton = false;
             siticoneBtnDeleteCustomer.IsToggled = false;
-            siticoneBtnDeleteCustomer.Location = new Point(866, 4);
+            siticoneBtnDeleteCustomer.Location = new Point(842, 3);
             siticoneBtnDeleteCustomer.LongPressDurationMS = 1000;
             siticoneBtnDeleteCustomer.Name = "siticoneBtnDeleteCustomer";
             siticoneBtnDeleteCustomer.NormalFontStyle = FontStyle.Regular;
@@ -209,7 +209,7 @@
             siticoneBtnEditCustomer.IsReadOnly = false;
             siticoneBtnEditCustomer.IsToggleButton = false;
             siticoneBtnEditCustomer.IsToggled = false;
-            siticoneBtnEditCustomer.Location = new Point(696, 4);
+            siticoneBtnEditCustomer.Location = new Point(672, 3);
             siticoneBtnEditCustomer.LongPressDurationMS = 1000;
             siticoneBtnEditCustomer.Name = "siticoneBtnEditCustomer";
             siticoneBtnEditCustomer.NormalFontStyle = FontStyle.Regular;
@@ -285,7 +285,7 @@
             siticoneBtnAddCustomer.IsReadOnly = false;
             siticoneBtnAddCustomer.IsToggleButton = false;
             siticoneBtnAddCustomer.IsToggled = false;
-            siticoneBtnAddCustomer.Location = new Point(526, 4);
+            siticoneBtnAddCustomer.Location = new Point(502, 3);
             siticoneBtnAddCustomer.LongPressDurationMS = 1000;
             siticoneBtnAddCustomer.Name = "siticoneBtnAddCustomer";
             siticoneBtnAddCustomer.NormalFontStyle = FontStyle.Regular;
@@ -323,7 +323,7 @@
             siticoneDataGridViewCustomers.Location = new Point(3, 48);
             siticoneDataGridViewCustomers.Name = "siticoneDataGridViewCustomers";
             siticoneDataGridViewCustomers.ShowSampleData = true;
-            siticoneDataGridViewCustomers.Size = new Size(1030, 433);
+            siticoneDataGridViewCustomers.Size = new Size(1003, 281);
             siticoneDataGridViewCustomers.TabIndex = 11;
             siticoneDataGridViewCustomers.Load += CustomersControl_Load;
             // 
@@ -337,7 +337,7 @@
             Controls.Add(siticoneBtnAddCustomer);
             Controls.Add(siticoneButtonTextboxSearchCustomers);
             Name = "CustomersControl";
-            Size = new Size(1032, 481);
+            Size = new Size(1015, 330);
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewCustomers).EndInit();
             ResumeLayout(false);
         }
