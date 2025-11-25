@@ -108,7 +108,7 @@ namespace AquaTrack.Pages
 
         private void siticoneBtnEditProduct_Click(object sender, EventArgs e)
         {
-            // 1. Check if exactly one row is selected
+            // check if exactly one row is selected
             if (siticoneDataGridViewProducts.GridView.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Please select exactly one product record to edit.", "Edit Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -116,7 +116,7 @@ namespace AquaTrack.Pages
             }
 
             var selectedRow = siticoneDataGridViewProducts.GridView.SelectedRows[0];
-            // Safest way is to read the 'ProductID' cell value, or extract the underlying model if possible.
+
             int productIdToEdit = -1;
 
             foreach (DataGridViewCell cell in selectedRow.Cells)
@@ -138,13 +138,12 @@ namespace AquaTrack.Pages
                 return;
             }
 
-            // 3. Open the ProductForm in Edit Mode
+            // open the ProductForm in Edit Mode
             ProductForm productForm = new ProductForm(productIdToEdit); // Use the new constructor
             productForm.ProductControlRef = this;
             productForm.ShowDialog();
         }
 
-        // centralized loader: pick the correct list once, set the actual visible GridView's DataSource
         private async Task loadProductsAsync(string searchTerm = null)
         {
             // Use an empty string if null for filtering consistency
@@ -181,6 +180,7 @@ namespace AquaTrack.Pages
             {
                 // fallback
                 siticoneDataGridViewProducts.DataSource = productsList;
+                siticoneDataGridViewProducts.AutoScroll = true;
                 siticoneDataGridViewProducts.Refresh();
                 return;
             }

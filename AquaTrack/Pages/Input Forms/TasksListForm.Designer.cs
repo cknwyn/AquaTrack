@@ -89,8 +89,8 @@
             siticoneDTPDeadline.BaseCalendarFormSize = new Size(535, 460);
             siticoneDTPDeadline.BorderColor = Color.Gray;
             siticoneDTPDeadline.BorderWidth = 2;
-            siticoneDTPDeadline.BottomLeftBorderRadius = 8;
-            siticoneDTPDeadline.BottomRightBorderRadius = 8;
+            siticoneDTPDeadline.BottomLeftBorderRadius = 0;
+            siticoneDTPDeadline.BottomRightBorderRadius = 0;
             siticoneDTPDeadline.CalendarBackgroundColor = Color.White;
             siticoneDTPDeadline.CalendarChevronColor = Color.Gray;
             siticoneDTPDeadline.CalendarChevronHoverColor = Color.Blue;
@@ -229,8 +229,8 @@
             siticoneDTPDeadline.TodayButtonText = "Today";
             siticoneDTPDeadline.TodayTextColor = Color.Black;
             siticoneDTPDeadline.TodayTextFont = new Font("Segoe UI", 10F, FontStyle.Bold);
-            siticoneDTPDeadline.TopLeftBorderRadius = 8;
-            siticoneDTPDeadline.TopRightBorderRadius = 8;
+            siticoneDTPDeadline.TopLeftBorderRadius = 0;
+            siticoneDTPDeadline.TopRightBorderRadius = 0;
             siticoneDTPDeadline.UseCalendarFormAnimation = true;
             siticoneDTPDeadline.UseCalendarFormShadow = true;
             siticoneDTPDeadline.UseChevronAnimation = true;

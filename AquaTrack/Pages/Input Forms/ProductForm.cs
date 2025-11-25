@@ -44,10 +44,20 @@ namespace AquaTrack.Pages.Input_Forms
                 MessageBox.Show("Please fill in all required fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            if (siticoneDropdownProductCategory.SelectedItem.ToString() == "Fish")
+            if (siticoneDropdownProductCategory.SelectedItem == null)
             {
-                if (string.IsNullOrWhiteSpace(siticoneDropdownWaterEnvironment.Text) ||
+                MessageBox.Show("Please select a category.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (siticoneUpDownProductPrice.Value < (decimal) 0.001)
+            {
+                MessageBox.Show("Please input a valid price for the product.");
+                return;
+            }
+
+            if (siticoneDropdownProductCategory.SelectedItem == "Fish")
+            {
+                if (siticoneDropdownWaterEnvironment.SelectedItem == null ||
                     string.IsNullOrWhiteSpace(siticoneUpDownFishAge.Text) ||
                     string.IsNullOrWhiteSpace(siticoneTextBoxSpeciesName.Text))
                 {
@@ -59,7 +69,7 @@ namespace AquaTrack.Pages.Input_Forms
             {
                 if (string.IsNullOrWhiteSpace(siticoneTextBoxEquipmentBrand.Text) ||
                     string.IsNullOrWhiteSpace(siticoneTextBoxEquipmentModel.Text) ||
-                    string.IsNullOrWhiteSpace(siticoneDropdownEquipmentType.SelectedItem))
+                    siticoneDropdownEquipmentType.SelectedItem == null)
                 {
                     MessageBox.Show("Please fill in all required fields under equipment details.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -141,11 +151,6 @@ namespace AquaTrack.Pages.Input_Forms
                         fishToSave.Species = siticoneTextBoxSpeciesName.Text;
                         fishToSave.Age = int.Parse(siticoneUpDownFishAge.Text);
                         fishToSave.WaterEnvironment = siticoneDropdownWaterEnvironment.SelectedItem.ToString();
-
-                        // If the product was switched from Equipment to Fish (or vice versa), 
-                        // you would normally need to handle the deletion of the old derived record (Equipment)
-                        // and creation of the new derived record (Fish). Since EF Core handles derived types 
-                        // automatically on the single 'Products' DbSet, we rely on the object type being correct.
                     }
                     else if (category == "Equipment" && productToSave is Equipment equipmentToSave)
                     {

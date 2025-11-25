@@ -143,7 +143,7 @@ namespace AquaTrack.Pages
 
         private void siticoneBtnEditDnc_Click(object sender, EventArgs e)
         {
-            // 1. Validate a single row is selected
+            // validate a single row is selected
             if (siticoneDataGridViewDnc.GridView.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Please select exactly one damaged item record to edit.", "Edit Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -152,11 +152,9 @@ namespace AquaTrack.Pages
 
             var selectedRow = siticoneDataGridViewDnc.GridView.SelectedRows[0];
 
-            // 2. Safely get the selected Damaged object and its ID
-            // NOTE: LoadDncItems uses an anonymous type, so we must read the cell value if DataBoundItem is inaccessible.
             int damagedIdToEdit = -1;
 
-            // Attempt to get ID from DataBoundItem if it was castable (best practice)
+            // Attempt to get ID from DataBoundItem if it was castable
             if (selectedRow.DataBoundItem is Models.Damaged selectedDnc)
             {
                 damagedIdToEdit = selectedDnc.DamagedID;
@@ -174,8 +172,8 @@ namespace AquaTrack.Pages
                 return;
             }
 
-            // 3. Open DncForm, passing the DamagedID to indicate Edit Mode
-            DncForm dncForm = new DncForm(damagedIdToEdit); // Use new constructor
+            // open DncForm, passing the DamagedID to indicate Edit Mode
+            DncForm dncForm = new DncForm(damagedIdToEdit);
             dncForm.DamagedControlRef = this;
             dncForm.ShowDialog();
         }

@@ -263,7 +263,7 @@
             siticoneUpDownProductQuantity.InputType = SiticoneNetCoreUI.Helpers.Enum.InputType.Decimals;
             siticoneUpDownProductQuantity.IsReadOnly = false;
             siticoneUpDownProductQuantity.Location = new Point(63, 408);
-            siticoneUpDownProductQuantity.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            siticoneUpDownProductQuantity.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             siticoneUpDownProductQuantity.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             siticoneUpDownProductQuantity.Name = "siticoneUpDownProductQuantity";
             siticoneUpDownProductQuantity.RepeatSpeed = 50;
@@ -390,7 +390,7 @@
             siticoneUpDownFishAge.InputType = SiticoneNetCoreUI.Helpers.Enum.InputType.Decimals;
             siticoneUpDownFishAge.IsReadOnly = false;
             siticoneUpDownFishAge.Location = new Point(455, 148);
-            siticoneUpDownFishAge.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            siticoneUpDownFishAge.Maximum = new decimal(new int[] { 1500, 0, 0, 0 });
             siticoneUpDownFishAge.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             siticoneUpDownFishAge.Name = "siticoneUpDownFishAge";
             siticoneUpDownFishAge.RepeatSpeed = 50;

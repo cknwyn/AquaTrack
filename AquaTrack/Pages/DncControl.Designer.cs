@@ -314,6 +314,7 @@
             // 
             // siticoneDataGridViewDnc
             // 
+            siticoneDataGridViewDnc.AutoScroll = true;
             siticoneDataGridViewDnc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             siticoneDataGridViewDnc.BackColor = Color.FromArgb(240, 248, 255);
             siticoneDataGridViewDnc.CellFont = new Font("Segoe UI", 9.5F);

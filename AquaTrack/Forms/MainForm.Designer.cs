@@ -208,6 +208,7 @@
             // 
             // siticoneContentPanelMain
             // 
+            siticoneContentPanelMain.AutoScroll = true;
             siticoneContentPanelMain.BackColor = Color.White;
             siticoneContentPanelMain.ContentBackColor = Color.FromArgb(245, 245, 245);
             siticoneContentPanelMain.ContentPadding = new Padding(0);
@@ -233,7 +234,7 @@
             siticoneContentPanelDashboard.ContentBackColor = Color.Transparent;
             siticoneContentPanelDashboard.ContentPadding = new Padding(0);
             siticoneContentPanelDashboard.DefaultTitleFont = new Font("Segoe UI", 10F, FontStyle.Bold);
-            siticoneContentPanelDashboard.Dock = DockStyle.Fill;
+            siticoneContentPanelDashboard.Dock = DockStyle.Top;
             siticoneContentPanelDashboard.EmptyContentMessageColor = Color.Gray;
             siticoneContentPanelDashboard.EmptyContentMessageFont = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             siticoneContentPanelDashboard.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -255,6 +256,7 @@
             Controls.Add(siticoneContentPanelDashboard);
             Controls.Add(siticoneContentPanelMain);
             Controls.Add(siticoneNavbarMain);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AquaTrack";

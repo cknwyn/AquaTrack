@@ -316,6 +316,7 @@
             // 
             // siticoneDataGridViewSupplier
             // 
+            siticoneDataGridViewSupplier.AutoScroll = true;
             siticoneDataGridViewSupplier.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             siticoneDataGridViewSupplier.BackColor = Color.FromArgb(240, 248, 255);
             siticoneDataGridViewSupplier.CellFont = new Font("Segoe UI", 9.5F);
@@ -324,7 +325,7 @@
             siticoneDataGridViewSupplier.Location = new Point(3, 49);
             siticoneDataGridViewSupplier.Name = "siticoneDataGridViewSupplier";
             siticoneDataGridViewSupplier.ShowSampleData = true;
-            siticoneDataGridViewSupplier.Size = new Size(1030, 429);
+            siticoneDataGridViewSupplier.Size = new Size(1009, 426);
             siticoneDataGridViewSupplier.TabIndex = 6;
             // 
             // SupplierControl

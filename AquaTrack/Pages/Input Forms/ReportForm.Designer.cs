@@ -121,8 +121,8 @@
             siticoneDateTimePickerReportStartDate.BaseCalendarFormSize = new Size(535, 460);
             siticoneDateTimePickerReportStartDate.BorderColor = Color.FromArgb(180, 180, 180);
             siticoneDateTimePickerReportStartDate.BorderWidth = 2;
-            siticoneDateTimePickerReportStartDate.BottomLeftBorderRadius = 8;
-            siticoneDateTimePickerReportStartDate.BottomRightBorderRadius = 8;
+            siticoneDateTimePickerReportStartDate.BottomLeftBorderRadius = 0;
+            siticoneDateTimePickerReportStartDate.BottomRightBorderRadius = 0;
             siticoneDateTimePickerReportStartDate.CalendarBackgroundColor = Color.White;
             siticoneDateTimePickerReportStartDate.CalendarChevronColor = Color.Gray;
             siticoneDateTimePickerReportStartDate.CalendarChevronHoverColor = Color.Blue;
@@ -160,7 +160,7 @@
             siticoneDateTimePickerReportStartDate.CalendarRangeStartDateBackColor = Color.DodgerBlue;
             siticoneDateTimePickerReportStartDate.CalendarSelectedDateBackColor = Color.FromArgb(0, 120, 215);
             siticoneDateTimePickerReportStartDate.CalendarSelectedDateForeColor = Color.White;
-            siticoneDateTimePickerReportStartDate.CalendarSelectionMode = SiticoneNetCoreUI.SelectionMode.Range;
+            siticoneDateTimePickerReportStartDate.CalendarSelectionMode = SiticoneNetCoreUI.SelectionMode.Single;
             siticoneDateTimePickerReportStartDate.CalendarTodayBackColor = Color.White;
             siticoneDateTimePickerReportStartDate.CalendarTodayForeColor = Color.Black;
             siticoneDateTimePickerReportStartDate.CalendarYearPickerHeight = 10;
@@ -239,7 +239,7 @@
             siticoneDateTimePickerReportStartDate.SelectedDateBorderColor = Color.Black;
             siticoneDateTimePickerReportStartDate.SelectedDateBorderThickness = 1F;
             siticoneDateTimePickerReportStartDate.SelectedDates = (List<DateTime>)resources.GetObject("siticoneDateTimePickerReportStartDate.SelectedDates");
-            siticoneDateTimePickerReportStartDate.SelectionMode = SiticoneNetCoreUI.SelectionMode.Range;
+            siticoneDateTimePickerReportStartDate.SelectionMode = SiticoneNetCoreUI.SelectionMode.Single;
             siticoneDateTimePickerReportStartDate.ShakeAmplitude = 4;
             siticoneDateTimePickerReportStartDate.ShakeTimerInterval = 30;
             siticoneDateTimePickerReportStartDate.ShakeTotalShakes = 8;
@@ -262,8 +262,8 @@
             siticoneDateTimePickerReportStartDate.TodayButtonText = "Today";
             siticoneDateTimePickerReportStartDate.TodayTextColor = Color.Black;
             siticoneDateTimePickerReportStartDate.TodayTextFont = new Font("Segoe UI", 10F, FontStyle.Bold);
-            siticoneDateTimePickerReportStartDate.TopLeftBorderRadius = 8;
-            siticoneDateTimePickerReportStartDate.TopRightBorderRadius = 8;
+            siticoneDateTimePickerReportStartDate.TopLeftBorderRadius = 0;
+            siticoneDateTimePickerReportStartDate.TopRightBorderRadius = 0;
             siticoneDateTimePickerReportStartDate.UseCalendarFormAnimation = true;
             siticoneDateTimePickerReportStartDate.UseCalendarFormShadow = true;
             siticoneDateTimePickerReportStartDate.UseChevronAnimation = true;
@@ -596,8 +596,8 @@
             siticoneDateTimePickerReportEndDate.BaseCalendarFormSize = new Size(535, 460);
             siticoneDateTimePickerReportEndDate.BorderColor = Color.FromArgb(180, 180, 180);
             siticoneDateTimePickerReportEndDate.BorderWidth = 2;
-            siticoneDateTimePickerReportEndDate.BottomLeftBorderRadius = 8;
-            siticoneDateTimePickerReportEndDate.BottomRightBorderRadius = 8;
+            siticoneDateTimePickerReportEndDate.BottomLeftBorderRadius = 0;
+            siticoneDateTimePickerReportEndDate.BottomRightBorderRadius = 0;
             siticoneDateTimePickerReportEndDate.CalendarBackgroundColor = Color.White;
             siticoneDateTimePickerReportEndDate.CalendarChevronColor = Color.Gray;
             siticoneDateTimePickerReportEndDate.CalendarChevronHoverColor = Color.Blue;
@@ -635,7 +635,7 @@
             siticoneDateTimePickerReportEndDate.CalendarRangeStartDateBackColor = Color.DodgerBlue;
             siticoneDateTimePickerReportEndDate.CalendarSelectedDateBackColor = Color.FromArgb(0, 120, 215);
             siticoneDateTimePickerReportEndDate.CalendarSelectedDateForeColor = Color.White;
-            siticoneDateTimePickerReportEndDate.CalendarSelectionMode = SiticoneNetCoreUI.SelectionMode.Range;
+            siticoneDateTimePickerReportEndDate.CalendarSelectionMode = SiticoneNetCoreUI.SelectionMode.Single;
             siticoneDateTimePickerReportEndDate.CalendarTodayBackColor = Color.White;
             siticoneDateTimePickerReportEndDate.CalendarTodayForeColor = Color.Black;
             siticoneDateTimePickerReportEndDate.CalendarYearPickerHeight = 10;
@@ -714,7 +714,7 @@
             siticoneDateTimePickerReportEndDate.SelectedDateBorderColor = Color.Black;
             siticoneDateTimePickerReportEndDate.SelectedDateBorderThickness = 1F;
             siticoneDateTimePickerReportEndDate.SelectedDates = (List<DateTime>)resources.GetObject("siticoneDateTimePickerReportEndDate.SelectedDates");
-            siticoneDateTimePickerReportEndDate.SelectionMode = SiticoneNetCoreUI.SelectionMode.Range;
+            siticoneDateTimePickerReportEndDate.SelectionMode = SiticoneNetCoreUI.SelectionMode.Single;
             siticoneDateTimePickerReportEndDate.ShakeAmplitude = 4;
             siticoneDateTimePickerReportEndDate.ShakeTimerInterval = 30;
             siticoneDateTimePickerReportEndDate.ShakeTotalShakes = 8;
@@ -737,8 +737,8 @@
             siticoneDateTimePickerReportEndDate.TodayButtonText = "Today";
             siticoneDateTimePickerReportEndDate.TodayTextColor = Color.Black;
             siticoneDateTimePickerReportEndDate.TodayTextFont = new Font("Segoe UI", 10F, FontStyle.Bold);
-            siticoneDateTimePickerReportEndDate.TopLeftBorderRadius = 8;
-            siticoneDateTimePickerReportEndDate.TopRightBorderRadius = 8;
+            siticoneDateTimePickerReportEndDate.TopLeftBorderRadius = 0;
+            siticoneDateTimePickerReportEndDate.TopRightBorderRadius = 0;
             siticoneDateTimePickerReportEndDate.UseCalendarFormAnimation = true;
             siticoneDateTimePickerReportEndDate.UseCalendarFormShadow = true;
             siticoneDateTimePickerReportEndDate.UseChevronAnimation = true;

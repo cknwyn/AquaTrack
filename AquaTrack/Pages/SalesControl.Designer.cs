@@ -89,29 +89,31 @@
             // 
             // siticoneDataGridViewSale
             // 
+            siticoneDataGridViewSale.AutoScroll = true;
             siticoneDataGridViewSale.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             siticoneDataGridViewSale.BackColor = Color.FromArgb(240, 248, 255);
-            siticoneDataGridViewSale.CellFont = new Font("Segoe UI", 9.5F);
+            siticoneDataGridViewSale.CellFont = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             siticoneDataGridViewSale.GridTheme = SiticoneNetCoreUI.GridTheme.Blue;
             siticoneDataGridViewSale.HeaderFont = new Font("Verdana", 9.75F, FontStyle.Bold);
             siticoneDataGridViewSale.Location = new Point(3, 47);
             siticoneDataGridViewSale.Name = "siticoneDataGridViewSale";
             siticoneDataGridViewSale.ShowSampleData = true;
-            siticoneDataGridViewSale.Size = new Size(488, 431);
+            siticoneDataGridViewSale.Size = new Size(488, 428);
             siticoneDataGridViewSale.TabIndex = 2;
             siticoneDataGridViewSale.Load += SalesControl_Load;
             // 
             // siticoneDataGridViewSaleItems
             // 
+            siticoneDataGridViewSaleItems.AutoScroll = true;
             siticoneDataGridViewSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             siticoneDataGridViewSaleItems.BackColor = Color.FromArgb(240, 248, 255);
-            siticoneDataGridViewSaleItems.CellFont = new Font("Segoe UI", 9.5F);
+            siticoneDataGridViewSaleItems.CellFont = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             siticoneDataGridViewSaleItems.GridTheme = SiticoneNetCoreUI.GridTheme.Blue;
             siticoneDataGridViewSaleItems.HeaderFont = new Font("Verdana", 9.75F, FontStyle.Bold);
-            siticoneDataGridViewSaleItems.Location = new Point(509, 47);
+            siticoneDataGridViewSaleItems.Location = new Point(507, 47);
             siticoneDataGridViewSaleItems.Name = "siticoneDataGridViewSaleItems";
             siticoneDataGridViewSaleItems.ShowSampleData = true;
-            siticoneDataGridViewSaleItems.Size = new Size(520, 431);
+            siticoneDataGridViewSaleItems.Size = new Size(505, 428);
             siticoneDataGridViewSaleItems.TabIndex = 3;
             // 
             // siticoneBtnDeleteSale

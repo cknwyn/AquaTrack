@@ -89,6 +89,7 @@
             // 
             // siticoneDataGridViewProducts
             // 
+            siticoneDataGridViewProducts.AutoScroll = true;
             siticoneDataGridViewProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             siticoneDataGridViewProducts.BackColor = Color.FromArgb(240, 248, 255);
             siticoneDataGridViewProducts.CellFont = new Font("Segoe UI", 9.5F);
@@ -97,7 +98,7 @@
             siticoneDataGridViewProducts.Location = new Point(0, 47);
             siticoneDataGridViewProducts.Name = "siticoneDataGridViewProducts";
             siticoneDataGridViewProducts.ShowSampleData = true;
-            siticoneDataGridViewProducts.Size = new Size(1030, 434);
+            siticoneDataGridViewProducts.Size = new Size(1032, 431);
             siticoneDataGridViewProducts.TabIndex = 1;
             // 
             // siticoneBtnAddProduct
@@ -376,7 +377,7 @@
             Controls.Add(siticoneDataGridViewProducts);
             Controls.Add(siticoneButtonTextboxSearchProducts);
             Name = "ProductsControl";
-            Size = new Size(1032, 481);
+            Size = new Size(1032, 478);
             ((System.ComponentModel.ISupportInitialize)siticoneDataGridViewProducts).EndInit();
             ResumeLayout(false);
         }
