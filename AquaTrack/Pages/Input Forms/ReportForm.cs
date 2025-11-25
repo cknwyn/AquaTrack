@@ -50,7 +50,7 @@ namespace AquaTrack.Pages.Input_Forms
                     {
                         // 1. Create a new PDF document
                         PdfDocument document = new PdfDocument();
-                        document.Info.Title = $"{siticoneDropdownReportType.SelectedItem} Report";
+                        document.Info.Title = $"{siticoneTextBoxReportTitle.Text} {siticoneDropdownReportType.SelectedItem} Report";
 
                         // 2. Create an empty page
                         PdfPage page = document.AddPage();
