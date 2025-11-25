@@ -46,7 +46,7 @@
             // siticoneLabelSupplierDetails
             // 
             siticoneLabelSupplierDetails.BackColor = Color.Transparent;
-            siticoneLabelSupplierDetails.Font = new Font("Segoe UI", 10F);
+            siticoneLabelSupplierDetails.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             siticoneLabelSupplierDetails.Location = new Point(34, 19);
             siticoneLabelSupplierDetails.Name = "siticoneLabelSupplierDetails";
             siticoneLabelSupplierDetails.Size = new Size(117, 23);
@@ -289,7 +289,7 @@
             siticoneButtonSupplierConfirm.BadgeValueForeColor = Color.White;
             siticoneButtonSupplierConfirm.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonSupplierConfirm.BorderWidth = 1;
-            siticoneButtonSupplierConfirm.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonSupplierConfirm.ButtonBackColor = Color.FromArgb(192, 255, 192);
             siticoneButtonSupplierConfirm.ButtonImage = null;
             siticoneButtonSupplierConfirm.ButtonTextLeftPadding = 0;
             siticoneButtonSupplierConfirm.CanBeep = true;
@@ -365,7 +365,7 @@
             siticoneButtonSupplierCancel.BadgeValueForeColor = Color.White;
             siticoneButtonSupplierCancel.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonSupplierCancel.BorderWidth = 1;
-            siticoneButtonSupplierCancel.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonSupplierCancel.ButtonBackColor = Color.FromArgb(255, 192, 192);
             siticoneButtonSupplierCancel.ButtonImage = null;
             siticoneButtonSupplierCancel.ButtonTextLeftPadding = 0;
             siticoneButtonSupplierCancel.CanBeep = true;
@@ -427,6 +427,7 @@
             siticoneButtonSupplierCancel.TooltipText = null;
             siticoneButtonSupplierCancel.UseAdvancedRendering = true;
             siticoneButtonSupplierCancel.UseParticles = false;
+            siticoneButtonSupplierCancel.Click += siticoneButtonSupplierCancel_Click;
             // 
             // SuppliersForm
             // 

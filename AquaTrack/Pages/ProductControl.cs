@@ -175,7 +175,7 @@ namespace AquaTrack.Pages
             var fishList = await fishQuery.ToListAsync();
             var equipmentList = await equipmentQuery.ToListAsync();
 
-            var filterText = siticoneDropdownProductFilter?.Text?.Trim() ?? string.Empty;
+            var filterText = siticoneDropdownProductFilter?.SelectedItem?.ToString() ?? string.Empty;
             var grid = siticoneDataGridViewProducts?.GridView;
             if (grid == null)
             {

@@ -40,19 +40,25 @@ namespace AquaTrack.Pages.Input_Forms
                 MessageBox.Show("Supplier notes cannot exceed 500 characters.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (siticoneTextBoxSupplierAddress.Text == "")
-            {
-                MessageBox.Show("Supplier address cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             if (siticoneTextBoxSupplierName.Text == "")
             {
                 MessageBox.Show("Supplier name cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (siticoneTextBoxSupplierAddress.Text == "")
+            {
+                MessageBox.Show("Supplier address cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (siticoneTBASupplierEmail.Text.Contains("@") == false || siticoneTBASupplierEmail.Text.Contains(".") == false)
             {
                 MessageBox.Show("Supplier Email must be valid", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (siticoneTBASupplierContactNumber.Text.Length < 10 || siticoneTBASupplierContactNumber.Text.Length > 10 || !siticoneTBASupplierContactNumber.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Customer Contact Number must be valid", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             string supplierName = siticoneTextBoxSupplierName.Text;
@@ -149,6 +155,11 @@ namespace AquaTrack.Pages.Input_Forms
                     MessageBox.Show("Failed to load supplier data: " + ex.Message, "Error");
                 }
             }
+        }
+
+        private void siticoneButtonSupplierCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

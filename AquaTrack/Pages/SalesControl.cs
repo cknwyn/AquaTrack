@@ -35,15 +35,47 @@ namespace AquaTrack.Pages
         {
             LoadSalesAsync();
         }
-        public async Task LoadSalesAsync()
+        public async Task LoadSalesAsync(string searchTerm = null)
         {
             var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
             var options = optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db").Options;
+
+            // Reinitialize context if necessary
             _context = new InventoryContext(options);
 
-            var salesList = await _context.Sales.OrderBy(s => s.SaleID).ToListAsync();
+            var salesQuery = _context.Sales.AsQueryable();
+
+            var searchFilter = searchTerm?.Trim() ?? string.Empty;
+            var isSearching = !string.IsNullOrWhiteSpace(searchFilter);
+
+            // --- Apply Search Filter ---
+            if (isSearching)
+            {
+                if (int.TryParse(searchFilter, out int id))
+                {
+                    // Search by SaleID or CustomerID if the search term is a number
+                    salesQuery = salesQuery.Where(s => s.SaleID == id || s.CustomerID == id);
+                }
+                else
+                {
+                    // Search by PaymentMethod (or Customer Name if Customer entity was included)
+                    // Note: Searching by Customer Name requires Eager Loading the Customer entity.
+                    // For simplicity, we search PaymentMethod here.
+                    salesQuery = salesQuery.Where(s => s.PaymentMethod.Contains(searchFilter));
+                }
+            }
+
+            var salesList = await salesQuery.OrderBy(s => s.SaleID).ToListAsync();
+
+            // Display results
             siticoneDataGridViewSale.DataSource = salesList;
             siticoneDataGridViewSale.Refresh();
+
+            // Optional: Provide feedback if the search returned no results
+            if (isSearching && salesList.Count == 0)
+            {
+                MessageBox.Show($"No sales found matching '{searchFilter}'.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public async void RefreshSales()
@@ -211,6 +243,12 @@ namespace AquaTrack.Pages
             {
                 MessageBox.Show("Could not identify the selected sale record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void siticoneButtonTextboxSearchSales_ButtonClick(object sender, SiticoneNetCoreUI.ButtonTextboxClickEventArgs e)
+        {
+            string searchTerm = siticoneButtonTextboxSearchSales?.Text?.Trim() ?? string.Empty;
+            _ = LoadSalesAsync(searchTerm);
         }
     }
 }

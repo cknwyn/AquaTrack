@@ -42,11 +42,17 @@ namespace AquaTrack.Pages.Input_Forms
                 MessageBox.Show("Customer name cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (!siticoneTextBoxCustomerName.Text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            {
+                MessageBox.Show("Customer name can only contain letters and spaces.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (siticoneTextBoxCustomerEmail.Text.Contains("@") == false || siticoneTextBoxCustomerEmail.Text.Contains(".") == false)
             {
                 MessageBox.Show("Customer Email must be valid", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            if (siticoneTextBoxCustomerContactNumber.Text.Length < 10 || !siticoneTextBoxCustomerContactNumber.Text.All(char.IsDigit))
+            if (siticoneTextBoxCustomerContactNumber.Text.Length < 10 || siticoneTextBoxCustomerContactNumber.Text.Length > 10 || !siticoneTextBoxCustomerContactNumber.Text.All(char.IsDigit))
             {
                 MessageBox.Show("Customer Contact Number must be valid", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

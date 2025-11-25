@@ -157,7 +157,7 @@ namespace AquaTrack.Pages.Input_Forms
 
                         // 4. Update Sale Header properties
                         saleToSave.CustomerID = customer.CustomerID;
-                        saleToSave.SaleDate = (DateTime) siticoneDTPSaleDate.Value;
+                        saleToSave.SaleDate = (DateTime)siticoneDTPSaleDate.Value;
                         saleToSave.TotalAmount = _saleLines.Sum(l => l.Subtotal);
                         saleToSave.PaymentMethod = siticoneDropdownSalePaymentMethod.SelectedItem.ToString();
 
@@ -259,6 +259,58 @@ namespace AquaTrack.Pages.Input_Forms
                 {
                     MessageBox.Show("Failed to load sale data: " + ex.Message, "Error");
                 }
+            }
+        }
+
+        private void siticoneBtnEditSaleItem_Click(object sender, EventArgs e)
+        {
+            var gridView = siticoneDataGridViewSaleItem.GridView;
+
+            if (gridView.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select exactly one item to edit.", "Select Item");
+                return;
+            }
+
+            var selectedRow = gridView.SelectedRows[0];
+            if (selectedRow.DataBoundItem is SaleLine lineToEdit)
+            {
+                // Find the index of the original item in the BindingList
+                int itemIndex = _saleLines.IndexOf(lineToEdit);
+                if (itemIndex == -1) return; 
+
+                // Open the SaleItemsForm in edit mode
+                SaleItemsForm saleItemsForm = new SaleItemsForm(lineToEdit);
+
+                if (saleItemsForm.ShowDialog() == DialogResult.OK)
+                {
+                    if (saleItemsForm.CreatedLine.HasValue)
+                    {
+                        // Replace the old item at the exact same index with the new edited line
+                        _saleLines[itemIndex] = saleItemsForm.CreatedLine.Value;
+
+                        // Note: The BindingList will automatically refresh the DataGridView
+                    }
+                }
+            }
+        }
+
+        private void siticoneBtnDeleteSaleItem_Click(object sender, EventArgs e)
+        {
+            var gridView = siticoneDataGridViewSaleItem.GridView;
+
+            if (gridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an item to delete.", "Select Item");
+                return;
+            }
+
+            // Deletion only happens on the in-memory list
+            // only remove the first selected item.
+            var selectedRow = gridView.SelectedRows[0];
+            if (selectedRow.DataBoundItem is SaleLine lineToDelete)
+            {
+                _saleLines.Remove(lineToDelete);
             }
         }
     }

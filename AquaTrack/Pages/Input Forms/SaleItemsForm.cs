@@ -19,10 +19,27 @@ namespace AquaTrack.Pages.Input_Forms
 
         // Expose created line so the parent SalesForm can read it after dialog closes
         public SalesForm.SaleLine? CreatedLine { get; private set; }
+        private SalesForm.SaleLine? _originalLine;
 
         public SaleItemsForm()
         {
             InitializeComponent();
+        }
+
+        public SaleItemsForm(SalesForm.SaleLine lineToEdit) : this()
+        {
+            _originalLine = lineToEdit;
+            this.Text = "Edit Sale Item";
+
+            // Disable product selection when editing (as this changes the whole item)
+            siticoneDropdownSaleItemProduct.Enabled = false;
+
+            // set Quantity
+            siticoneUpDown1.Value = lineToEdit.Quantity;
+
+            // set Product
+            siticoneDropdownSaleItemProduct.Text = lineToEdit.ProductName;
+            siticoneDropdownSaleItemProduct.SelectedValue = lineToEdit.ProductID;
         }
 
         private void siticoneButtonSaleItemCancel_Click(object sender, EventArgs e)
@@ -91,14 +108,25 @@ namespace AquaTrack.Pages.Input_Forms
             using (var ctx = new InventoryContext(optionsBuilder.Options))
             {
                 var product = ctx.Products.FirstOrDefault(p => p.ProductsID == productId);
-                if (product == null)
+
+                // --- Determine Stock Adjustment needed for Edit Mode ---
+                int stockAdjustment = quantity; // Quantity to deduct for new/edited item
+
+                // If editing, factor in the quantity of the original line
+                if (_originalLine.HasValue)
                 {
-                    MessageBox.Show("Selected product not found in database", "Error");
+                    // The net deduction is: (new quantity) - (old quantity)
+                    stockAdjustment = quantity - _originalLine.Value.Quantity;
+                }
+
+                // Perform stock check against the net adjustment
+                if (product.StockQuantity < stockAdjustment)
+                {
+                    MessageBox.Show($"Stock check failed. Net change requires {stockAdjustment} more units. Available stock is {product.StockQuantity}.", "Inventory Error");
                     return;
                 }
 
-                // Do NOT persist a SaleItem here — the SaleItems should be collected by the parent SalesForm,
-                // and the Sale + SaleItems persisted together. Instead create a DTO line and return it.
+                // Create the new SaleLine DTO
                 CreatedLine = new SalesForm.SaleLine
                 {
                     ProductID = product.ProductsID,

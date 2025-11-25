@@ -34,15 +34,38 @@ namespace AquaTrack.Pages
             loadSuppliersAsync();
         }
 
-        private async Task loadSuppliersAsync()
+        private async Task loadSuppliersAsync(string searchTerm = null)
         {
             var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
             var options = optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db").Options;
+
             _context = new InventoryContext(options);
 
-            var suppliersList = await _context.Suppliers.OrderBy(s => s.SupplierID).ToListAsync();
+            var suppliersQuery = _context.Suppliers.AsQueryable();
+
+            var searchFilter = searchTerm?.Trim() ?? string.Empty;
+            var isSearching = !string.IsNullOrWhiteSpace(searchFilter);
+
+            // APPLY SEARCH FILTER
+            if (isSearching)
+            {
+                // Filter by Name, Email, or ContactNumber (case-insensitive)
+                suppliersQuery = suppliersQuery.Where(s =>
+                    s.Name.Contains(searchFilter) ||
+                    s.Email.Contains(searchFilter) ||
+                    s.ContactNumber.Contains(searchFilter));
+            }
+
+            var suppliersList = await suppliersQuery.OrderBy(s => s.SupplierID).ToListAsync();
+
             siticoneDataGridViewSupplier.DataSource = suppliersList;
             siticoneDataGridViewSupplier.Refresh();
+
+            // provide feedback if the search returned no results
+            if (isSearching && suppliersList.Count == 0)
+            {
+                MessageBox.Show($"No suppliers found matching '{searchFilter}'.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public async void refreshSupplierList()
@@ -155,6 +178,12 @@ namespace AquaTrack.Pages
             {
                 MessageBox.Show("Could not identify the selected supplier record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void siticoneButtonTextboxSearchSupplier_ButtonClick(object sender, SiticoneNetCoreUI.ButtonTextboxClickEventArgs e)
+        {
+            string searchTerm = siticoneButtonTextboxSearchSupplier?.Text?.Trim() ?? string.Empty;
+            _ = loadSuppliersAsync(searchTerm);
         }
     }
 }

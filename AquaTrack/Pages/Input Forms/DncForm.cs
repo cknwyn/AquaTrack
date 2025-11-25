@@ -42,7 +42,6 @@ namespace AquaTrack.Pages.Input_Forms
 
         private void siticoneButtonDamagedConfirm_Click(object sender, EventArgs e)
         {
-            // Ensure DbContext is available for AddDamagedItem (AddDamagedItem expects _context to be set)
             if (_context == null)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
@@ -50,11 +49,16 @@ namespace AquaTrack.Pages.Input_Forms
                 _context = new InventoryContext(optionsBuilder.Options);
             }
 
+            if (siticoneDateTimePicker1.Value == null)
+            {
+                MessageBox.Show("Please select a valid date", "Error");
+                return;
+            }
+
             // Resolve selected product id from dropdown
             int productId = -1;
             try
             {
-                // Preferred: SelectedValue contains the ProductsID
                 if (siticoneDropdownDamagedProduct.SelectedValue != null &&
                     int.TryParse(siticoneDropdownDamagedProduct.SelectedValue.ToString(), out var parsedId))
                 {
@@ -62,7 +66,6 @@ namespace AquaTrack.Pages.Input_Forms
                 }
                 else if (siticoneDropdownDamagedProduct.SelectedItem != null)
                 {
-                    // Fallback: SelectedItem is an anonymous type with ProductsID property (from earlier query)
                     var sel = siticoneDropdownDamagedProduct.SelectedItem;
                     var prop = sel.GetType().GetProperty("ProductsID") ?? sel.GetType().GetProperty("ProductID");
                     if (prop != null && int.TryParse(prop.GetValue(sel)?.ToString(), out parsedId))
@@ -80,11 +83,10 @@ namespace AquaTrack.Pages.Input_Forms
                 return;
             }
 
-            // Get damaged quantity - try common controls then fall back to an input box.
+            // Get damaged quantity
             int damagedQty = 0;
             bool qtyParsed = false;
 
-            // Try numeric control names people commonly use
             var numericControl = Controls.Find("siticoneUpDownDamagedQuantity", true).FirstOrDefault() as SiticoneNetCoreUI.SiticoneUpDown
                 ?? Controls.Find("siticoneUpDownDamagedQuantity", true).FirstOrDefault() as SiticoneNetCoreUI.SiticoneUpDown;
             if (numericControl != null)
@@ -127,11 +129,14 @@ namespace AquaTrack.Pages.Input_Forms
 
                     MessageBox.Show($"Damaged item record successfully {(_damagedIdToEdit > 0 ? "updated" : "recorded")} and stock adjusted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Refresh parent lists
-                    ProductsControlRef?.refreshProductsList();
-                    DamagedControlRef?.RefreshDncItems();
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        // Refresh parent lists
+                        ProductsControlRef?.refreshProductsList();
+                        DamagedControlRef?.RefreshDncItems();
 
-                    this.Close();
+                        this.Close();
+                    });
                 }
             }
             catch (Exception ex)
@@ -181,7 +186,7 @@ namespace AquaTrack.Pages.Input_Forms
             }
             else
             {
-                // === ADD MODE (Original AddDamagedItem logic) ===
+                // === ADD MODE ===
                 var product = await ctx.Products.FirstOrDefaultAsync(p => p.ProductsID == productId);
 
                 if (product == null) throw new Exception("Product not found in inventory.");
@@ -209,6 +214,7 @@ namespace AquaTrack.Pages.Input_Forms
             }
 
             await ctx.SaveChangesAsync();
+            ProductsControlRef?.refreshProductsList();
         }
 
         private async void LoadDncData(int damagedId)

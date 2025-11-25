@@ -83,6 +83,7 @@
             siticoneButtonTextboxSearchCustomers.TopLeftCornerRadius = 20;
             siticoneButtonTextboxSearchCustomers.TopRightCornerRadius = 20;
             siticoneButtonTextboxSearchCustomers.ValidationEnabled = false;
+            siticoneButtonTextboxSearchCustomers.ButtonClick += siticoneButtonTextboxSearchCustomers_ButtonClick;
             // 
             // siticoneBtnDeleteCustomer
             // 

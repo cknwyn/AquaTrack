@@ -41,36 +41,36 @@
             // siticoneDropdownSaleItemProduct
             // 
             siticoneDropdownSaleItemProduct.AllowMultipleSelection = false;
-            siticoneDropdownSaleItemProduct.BackColor = Color.FromArgb(240, 245, 255);
-            siticoneDropdownSaleItemProduct.BorderColor = Color.FromArgb(100, 150, 220);
+            siticoneDropdownSaleItemProduct.BackColor = Color.White;
+            siticoneDropdownSaleItemProduct.BorderColor = Color.FromArgb(180, 180, 180);
             siticoneDropdownSaleItemProduct.CanBeep = false;
             siticoneDropdownSaleItemProduct.CanShake = true;
             siticoneDropdownSaleItemProduct.DataSource = null;
             siticoneDropdownSaleItemProduct.DisplayMember = null;
-            siticoneDropdownSaleItemProduct.DropdownBackColor = Color.FromArgb(245, 250, 255);
+            siticoneDropdownSaleItemProduct.DropdownBackColor = Color.White;
             siticoneDropdownSaleItemProduct.DropdownWidth = 0;
             siticoneDropdownSaleItemProduct.DropShadowEnabled = false;
             siticoneDropdownSaleItemProduct.Font = new Font("Segoe UI", 10F);
-            siticoneDropdownSaleItemProduct.ForeColor = Color.FromArgb(40, 40, 100);
-            siticoneDropdownSaleItemProduct.HoveredItemBackColor = Color.FromArgb(220, 235, 255);
-            siticoneDropdownSaleItemProduct.HoveredItemTextColor = Color.FromArgb(40, 40, 100);
+            siticoneDropdownSaleItemProduct.ForeColor = Color.FromArgb(60, 60, 60);
+            siticoneDropdownSaleItemProduct.HoveredItemBackColor = Color.FromArgb(240, 240, 240);
+            siticoneDropdownSaleItemProduct.HoveredItemTextColor = Color.FromArgb(30, 30, 30);
             siticoneDropdownSaleItemProduct.IsReadonly = false;
             siticoneDropdownSaleItemProduct.ItemHeight = 30;
             siticoneDropdownSaleItemProduct.Location = new Point(38, 41);
             siticoneDropdownSaleItemProduct.MaxDropDownItems = 8;
             siticoneDropdownSaleItemProduct.Name = "siticoneDropdownSaleItemProduct";
-            siticoneDropdownSaleItemProduct.PlaceholderColor = Color.FromArgb(150, 170, 200);
+            siticoneDropdownSaleItemProduct.PlaceholderColor = Color.Gray;
             siticoneDropdownSaleItemProduct.PlaceholderDisappearsOnFocus = false;
             siticoneDropdownSaleItemProduct.PlaceholderText = "Select an option";
             siticoneDropdownSaleItemProduct.SelectedIndex = -1;
             siticoneDropdownSaleItemProduct.SelectedItem = null;
-            siticoneDropdownSaleItemProduct.SelectedItemBackColor = Color.FromArgb(70, 130, 220);
-            siticoneDropdownSaleItemProduct.SelectedItemTextColor = Color.White;
+            siticoneDropdownSaleItemProduct.SelectedItemBackColor = Color.FromArgb(230, 240, 250);
+            siticoneDropdownSaleItemProduct.SelectedItemTextColor = Color.FromArgb(30, 30, 30);
             siticoneDropdownSaleItemProduct.SelectedValue = null;
             siticoneDropdownSaleItemProduct.Size = new Size(345, 40);
             siticoneDropdownSaleItemProduct.TabIndex = 0;
             siticoneDropdownSaleItemProduct.Text = "siticoneDropdown1";
-            siticoneDropdownSaleItemProduct.UnselectedItemTextColor = Color.FromArgb(40, 40, 100);
+            siticoneDropdownSaleItemProduct.UnselectedItemTextColor = Color.FromArgb(60, 60, 60);
             siticoneDropdownSaleItemProduct.ValueMember = null;
             siticoneDropdownSaleItemProduct.Click += siticoneDropdownSaleItemProduct_Click;
             // 
@@ -79,11 +79,11 @@
             siticoneUpDown1.AccessibleDescription = "An advanced numeric up/down control.";
             siticoneUpDown1.AccessibleName = "SiticoneUpDown";
             siticoneUpDown1.AccessibleRole = AccessibleRole.SpinButton;
-            siticoneUpDown1.ActiveBorderColor = Color.DodgerBlue;
+            siticoneUpDown1.ActiveBorderColor = Color.FromArgb(33, 150, 243);
             siticoneUpDown1.AllowMouseWheel = true;
             siticoneUpDown1.AnimateValueChanges = true;
             siticoneUpDown1.BackColor = Color.Transparent;
-            siticoneUpDown1.BorderColor = Color.Gray;
+            siticoneUpDown1.BorderColor = Color.FromArgb(200, 200, 200);
             siticoneUpDown1.CanBeep = true;
             siticoneUpDown1.CanShake = true;
             siticoneUpDown1.CornerRadiusBottomLeft = 4;
@@ -93,12 +93,12 @@
             siticoneUpDown1.DecimalPlaces = 0;
             siticoneUpDown1.EnableDirectInput = false;
             siticoneUpDown1.FillColor = Color.White;
-            siticoneUpDown1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            siticoneUpDown1.ForeColor = Color.Black;
+            siticoneUpDown1.Font = new Font("Microsoft Sans Serif", 11F);
+            siticoneUpDown1.ForeColor = Color.FromArgb(33, 33, 33);
             siticoneUpDown1.GradientColorEnd = Color.LightGray;
             siticoneUpDown1.GradientColorStart = Color.White;
             siticoneUpDown1.GradientMode = SiticoneNetCoreUI.Helpers.Enum.GradientModes.None;
-            siticoneUpDown1.HoverBorderColor = Color.Blue;
+            siticoneUpDown1.HoverBorderColor = Color.FromArgb(33, 150, 243);
             siticoneUpDown1.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             siticoneUpDown1.InitialRepeatDelay = 500;
             siticoneUpDown1.InputType = SiticoneNetCoreUI.Helpers.Enum.InputType.Decimals;
@@ -113,7 +113,7 @@
             siticoneUpDown1.StepPoints = (List<decimal>)resources.GetObject("siticoneUpDown1.StepPoints");
             siticoneUpDown1.TabIndex = 1;
             siticoneUpDown1.Text = "0";
-            siticoneUpDown1.TextAlignment = SiticoneNetCoreUI.Helpers.Text.TextAlignment.Right;
+            siticoneUpDown1.TextAlignment = SiticoneNetCoreUI.Helpers.Text.TextAlignment.Left;
             siticoneUpDown1.UseGradient = false;
             siticoneUpDown1.Value = new decimal(new int[] { 0, 0, 0, 0 });
             // 
@@ -149,7 +149,7 @@
             siticoneButtonSaleItemConfirm.BadgeValueForeColor = Color.White;
             siticoneButtonSaleItemConfirm.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonSaleItemConfirm.BorderWidth = 1;
-            siticoneButtonSaleItemConfirm.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonSaleItemConfirm.ButtonBackColor = Color.FromArgb(192, 255, 192);
             siticoneButtonSaleItemConfirm.ButtonImage = null;
             siticoneButtonSaleItemConfirm.ButtonTextLeftPadding = 0;
             siticoneButtonSaleItemConfirm.CanBeep = true;
@@ -225,7 +225,7 @@
             siticoneButtonSaleItemCancel.BadgeValueForeColor = Color.White;
             siticoneButtonSaleItemCancel.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonSaleItemCancel.BorderWidth = 1;
-            siticoneButtonSaleItemCancel.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonSaleItemCancel.ButtonBackColor = Color.FromArgb(255, 192, 192);
             siticoneButtonSaleItemCancel.ButtonImage = null;
             siticoneButtonSaleItemCancel.ButtonTextLeftPadding = 0;
             siticoneButtonSaleItemCancel.CanBeep = true;

@@ -63,36 +63,36 @@
             // siticoneDropdownSaleCustomerName
             // 
             siticoneDropdownSaleCustomerName.AllowMultipleSelection = false;
-            siticoneDropdownSaleCustomerName.BackColor = Color.FromArgb(240, 245, 255);
-            siticoneDropdownSaleCustomerName.BorderColor = Color.FromArgb(100, 150, 220);
+            siticoneDropdownSaleCustomerName.BackColor = Color.White;
+            siticoneDropdownSaleCustomerName.BorderColor = Color.FromArgb(180, 180, 180);
             siticoneDropdownSaleCustomerName.CanBeep = false;
             siticoneDropdownSaleCustomerName.CanShake = true;
             siticoneDropdownSaleCustomerName.DataSource = null;
             siticoneDropdownSaleCustomerName.DisplayMember = null;
-            siticoneDropdownSaleCustomerName.DropdownBackColor = Color.FromArgb(245, 250, 255);
+            siticoneDropdownSaleCustomerName.DropdownBackColor = Color.White;
             siticoneDropdownSaleCustomerName.DropdownWidth = 0;
             siticoneDropdownSaleCustomerName.DropShadowEnabled = false;
             siticoneDropdownSaleCustomerName.Font = new Font("Segoe UI", 10F);
-            siticoneDropdownSaleCustomerName.ForeColor = Color.FromArgb(40, 40, 100);
-            siticoneDropdownSaleCustomerName.HoveredItemBackColor = Color.FromArgb(220, 235, 255);
-            siticoneDropdownSaleCustomerName.HoveredItemTextColor = Color.FromArgb(40, 40, 100);
+            siticoneDropdownSaleCustomerName.ForeColor = Color.FromArgb(60, 60, 60);
+            siticoneDropdownSaleCustomerName.HoveredItemBackColor = Color.FromArgb(240, 240, 240);
+            siticoneDropdownSaleCustomerName.HoveredItemTextColor = Color.FromArgb(30, 30, 30);
             siticoneDropdownSaleCustomerName.IsReadonly = false;
             siticoneDropdownSaleCustomerName.ItemHeight = 30;
             siticoneDropdownSaleCustomerName.Location = new Point(45, 96);
             siticoneDropdownSaleCustomerName.MaxDropDownItems = 8;
             siticoneDropdownSaleCustomerName.Name = "siticoneDropdownSaleCustomerName";
-            siticoneDropdownSaleCustomerName.PlaceholderColor = Color.FromArgb(150, 170, 200);
+            siticoneDropdownSaleCustomerName.PlaceholderColor = Color.Gray;
             siticoneDropdownSaleCustomerName.PlaceholderDisappearsOnFocus = false;
             siticoneDropdownSaleCustomerName.PlaceholderText = "Select an option";
             siticoneDropdownSaleCustomerName.SelectedIndex = -1;
             siticoneDropdownSaleCustomerName.SelectedItem = null;
-            siticoneDropdownSaleCustomerName.SelectedItemBackColor = Color.FromArgb(70, 130, 220);
-            siticoneDropdownSaleCustomerName.SelectedItemTextColor = Color.White;
+            siticoneDropdownSaleCustomerName.SelectedItemBackColor = Color.FromArgb(230, 240, 250);
+            siticoneDropdownSaleCustomerName.SelectedItemTextColor = Color.FromArgb(30, 30, 30);
             siticoneDropdownSaleCustomerName.SelectedValue = null;
             siticoneDropdownSaleCustomerName.Size = new Size(269, 40);
             siticoneDropdownSaleCustomerName.TabIndex = 1;
             siticoneDropdownSaleCustomerName.Text = "siticoneDropdown1";
-            siticoneDropdownSaleCustomerName.UnselectedItemTextColor = Color.FromArgb(40, 40, 100);
+            siticoneDropdownSaleCustomerName.UnselectedItemTextColor = Color.FromArgb(60, 60, 60);
             siticoneDropdownSaleCustomerName.ValueMember = null;
             siticoneDropdownSaleCustomerName.Click += siticoneDropdownSaleCustomerName_Click;
             // 
@@ -101,10 +101,10 @@
             siticoneDTPSaleDate.AutoScaleFonts = true;
             siticoneDTPSaleDate.BackColor = Color.Transparent;
             siticoneDTPSaleDate.BaseCalendarFormSize = new Size(535, 460);
-            siticoneDTPSaleDate.BorderColor = Color.Gray;
+            siticoneDTPSaleDate.BorderColor = Color.FromArgb(180, 180, 180);
             siticoneDTPSaleDate.BorderWidth = 2;
-            siticoneDTPSaleDate.BottomLeftBorderRadius = 8;
-            siticoneDTPSaleDate.BottomRightBorderRadius = 8;
+            siticoneDTPSaleDate.BottomLeftBorderRadius = 0;
+            siticoneDTPSaleDate.BottomRightBorderRadius = 0;
             siticoneDTPSaleDate.CalendarBackgroundColor = Color.White;
             siticoneDTPSaleDate.CalendarChevronColor = Color.Gray;
             siticoneDTPSaleDate.CalendarChevronHoverColor = Color.Blue;
@@ -140,7 +140,7 @@
             siticoneDTPSaleDate.CalendarRangeEndDateBackColor = Color.DodgerBlue;
             siticoneDTPSaleDate.CalendarRangeSelectedForeColor = Color.Black;
             siticoneDTPSaleDate.CalendarRangeStartDateBackColor = Color.DodgerBlue;
-            siticoneDTPSaleDate.CalendarSelectedDateBackColor = Color.Black;
+            siticoneDTPSaleDate.CalendarSelectedDateBackColor = Color.FromArgb(0, 120, 215);
             siticoneDTPSaleDate.CalendarSelectedDateForeColor = Color.White;
             siticoneDTPSaleDate.CalendarSelectionMode = SiticoneNetCoreUI.SelectionMode.Single;
             siticoneDTPSaleDate.CalendarTodayBackColor = Color.White;
@@ -148,9 +148,9 @@
             siticoneDTPSaleDate.CalendarYearPickerHeight = 10;
             siticoneDTPSaleDate.CanBeep = true;
             siticoneDTPSaleDate.CanShake = true;
-            siticoneDTPSaleDate.ChevronColor = Color.Gray;
+            siticoneDTPSaleDate.ChevronColor = Color.FromArgb(100, 100, 100);
             siticoneDTPSaleDate.ChevronHoverBackColor = Color.FromArgb(220, 225, 245);
-            siticoneDTPSaleDate.ChevronHoverColor = Color.Black;
+            siticoneDTPSaleDate.ChevronHoverColor = Color.FromArgb(50, 50, 50);
             siticoneDTPSaleDate.ChevronPanelBorderRadius = 0;
             siticoneDTPSaleDate.ChevronPanelHeight = 32;
             siticoneDTPSaleDate.ChevronPenThickness = 1.8F;
@@ -170,7 +170,7 @@
             siticoneDTPSaleDate.DayButtonBorderRadius = 0;
             siticoneDTPSaleDate.DayButtonClickBackColor = Color.FromArgb(220, 230, 250);
             siticoneDTPSaleDate.DayButtonFont = new Font("Segoe UI", 10.5F);
-            siticoneDTPSaleDate.DayButtonHoverBackColor = Color.FromArgb(235, 240, 255);
+            siticoneDTPSaleDate.DayButtonHoverBackColor = Color.FromArgb(240, 245, 255);
             siticoneDTPSaleDate.DayButtonHoverForeColor = Color.Black;
             siticoneDTPSaleDate.DayButtonMargin = new Padding(3);
             siticoneDTPSaleDate.DayButtonRowHeight = 16.66F;
@@ -185,7 +185,7 @@
             siticoneDTPSaleDate.FillColor = Color.White;
             siticoneDTPSaleDate.FirstDayOfWeek = DayOfWeek.Sunday;
             siticoneDTPSaleDate.Font = new Font("Segoe UI", 10F);
-            siticoneDTPSaleDate.ForeColor = Color.DimGray;
+            siticoneDTPSaleDate.ForeColor = Color.FromArgb(50, 50, 50);
             siticoneDTPSaleDate.GradientEndColor = Color.Gray;
             siticoneDTPSaleDate.GradientStartColor = Color.White;
             siticoneDTPSaleDate.HighlightWeekends = true;
@@ -205,11 +205,11 @@
             siticoneDTPSaleDate.MonthComboBoxSize = new Size(130, 30);
             siticoneDTPSaleDate.Name = "siticoneDTPSaleDate";
             siticoneDTPSaleDate.NavigationFlowPadding = new Padding(12, 0, 12, 0);
-            siticoneDTPSaleDate.NavigationPanelBackColor = Color.FromArgb(245, 245, 250);
+            siticoneDTPSaleDate.NavigationPanelBackColor = Color.FromArgb(245, 245, 245);
             siticoneDTPSaleDate.NavigationPanelHeight = 65;
             siticoneDTPSaleDate.NextMonthPanelWidth = 34;
             siticoneDTPSaleDate.NextYearPanelWidth = 40;
-            siticoneDTPSaleDate.PlaceholderText = "Select a date, dates or range...";
+            siticoneDTPSaleDate.PlaceholderText = "Select a date...";
             siticoneDTPSaleDate.PrevMonthPanelWidth = 34;
             siticoneDTPSaleDate.PrevYearPanelWidth = 40;
             siticoneDTPSaleDate.RangeStartEndCornerRadius = 0;
@@ -228,24 +228,24 @@
             siticoneDTPSaleDate.ShowClearButton = true;
             siticoneDTPSaleDate.ShowMonthYearNavigation = true;
             siticoneDTPSaleDate.ShowTodayButton = true;
-            siticoneDTPSaleDate.Size = new Size(269, 45);
+            siticoneDTPSaleDate.Size = new Size(269, 39);
             siticoneDTPSaleDate.TabIndex = 2;
             siticoneDTPSaleDate.Text = "siticoneDateTimePicker1";
             siticoneDTPSaleDate.TodayBorderColor = Color.Black;
             siticoneDTPSaleDate.TodayBorderThickness = 2F;
-            siticoneDTPSaleDate.TodayButtonBackColor = Color.Black;
+            siticoneDTPSaleDate.TodayButtonBackColor = Color.FromArgb(0, 120, 215);
             siticoneDTPSaleDate.TodayButtonBorderRadius = 0;
             siticoneDTPSaleDate.TodayButtonClickBackColor = Color.Black;
             siticoneDTPSaleDate.TodayButtonFont = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             siticoneDTPSaleDate.TodayButtonForeColor = Color.White;
-            siticoneDTPSaleDate.TodayButtonHoverBackColor = Color.FromArgb(64, 64, 64);
+            siticoneDTPSaleDate.TodayButtonHoverBackColor = Color.FromArgb(0, 100, 190);
             siticoneDTPSaleDate.TodayButtonMargin = new Padding(0, 17, 15, 0);
             siticoneDTPSaleDate.TodayButtonSize = new Size(70, 35);
             siticoneDTPSaleDate.TodayButtonText = "Today";
             siticoneDTPSaleDate.TodayTextColor = Color.Black;
             siticoneDTPSaleDate.TodayTextFont = new Font("Segoe UI", 10F, FontStyle.Bold);
-            siticoneDTPSaleDate.TopLeftBorderRadius = 8;
-            siticoneDTPSaleDate.TopRightBorderRadius = 8;
+            siticoneDTPSaleDate.TopLeftBorderRadius = 0;
+            siticoneDTPSaleDate.TopRightBorderRadius = 0;
             siticoneDTPSaleDate.UseCalendarFormAnimation = true;
             siticoneDTPSaleDate.UseCalendarFormShadow = true;
             siticoneDTPSaleDate.UseChevronAnimation = true;
@@ -261,36 +261,36 @@
             // siticoneDropdownSalePaymentMethod
             // 
             siticoneDropdownSalePaymentMethod.AllowMultipleSelection = false;
-            siticoneDropdownSalePaymentMethod.BackColor = Color.FromArgb(240, 245, 255);
-            siticoneDropdownSalePaymentMethod.BorderColor = Color.FromArgb(100, 150, 220);
+            siticoneDropdownSalePaymentMethod.BackColor = Color.White;
+            siticoneDropdownSalePaymentMethod.BorderColor = Color.FromArgb(180, 180, 180);
             siticoneDropdownSalePaymentMethod.CanBeep = false;
             siticoneDropdownSalePaymentMethod.CanShake = true;
             siticoneDropdownSalePaymentMethod.DataSource = null;
             siticoneDropdownSalePaymentMethod.DisplayMember = null;
-            siticoneDropdownSalePaymentMethod.DropdownBackColor = Color.FromArgb(245, 250, 255);
+            siticoneDropdownSalePaymentMethod.DropdownBackColor = Color.White;
             siticoneDropdownSalePaymentMethod.DropdownWidth = 0;
             siticoneDropdownSalePaymentMethod.DropShadowEnabled = false;
             siticoneDropdownSalePaymentMethod.Font = new Font("Segoe UI", 10F);
-            siticoneDropdownSalePaymentMethod.ForeColor = Color.FromArgb(40, 40, 100);
-            siticoneDropdownSalePaymentMethod.HoveredItemBackColor = Color.FromArgb(220, 235, 255);
-            siticoneDropdownSalePaymentMethod.HoveredItemTextColor = Color.FromArgb(40, 40, 100);
+            siticoneDropdownSalePaymentMethod.ForeColor = Color.FromArgb(60, 60, 60);
+            siticoneDropdownSalePaymentMethod.HoveredItemBackColor = Color.FromArgb(240, 240, 240);
+            siticoneDropdownSalePaymentMethod.HoveredItemTextColor = Color.FromArgb(30, 30, 30);
             siticoneDropdownSalePaymentMethod.IsReadonly = false;
             siticoneDropdownSalePaymentMethod.ItemHeight = 30;
             siticoneDropdownSalePaymentMethod.Items.AddRange(new string[] { "Cash", "Credit Card", "Debit Card", "GCash", "Maya" });
             siticoneDropdownSalePaymentMethod.Location = new Point(45, 291);
             siticoneDropdownSalePaymentMethod.MaxDropDownItems = 8;
             siticoneDropdownSalePaymentMethod.Name = "siticoneDropdownSalePaymentMethod";
-            siticoneDropdownSalePaymentMethod.PlaceholderColor = Color.FromArgb(150, 170, 200);
+            siticoneDropdownSalePaymentMethod.PlaceholderColor = Color.Gray;
             siticoneDropdownSalePaymentMethod.PlaceholderDisappearsOnFocus = false;
             siticoneDropdownSalePaymentMethod.PlaceholderText = "Select an option";
             siticoneDropdownSalePaymentMethod.SelectedIndex = -1;
             siticoneDropdownSalePaymentMethod.SelectedItem = null;
-            siticoneDropdownSalePaymentMethod.SelectedItemBackColor = Color.FromArgb(70, 130, 220);
-            siticoneDropdownSalePaymentMethod.SelectedItemTextColor = Color.White;
+            siticoneDropdownSalePaymentMethod.SelectedItemBackColor = Color.FromArgb(230, 240, 250);
+            siticoneDropdownSalePaymentMethod.SelectedItemTextColor = Color.FromArgb(30, 30, 30);
             siticoneDropdownSalePaymentMethod.SelectedValue = null;
             siticoneDropdownSalePaymentMethod.Size = new Size(269, 40);
             siticoneDropdownSalePaymentMethod.TabIndex = 3;
-            siticoneDropdownSalePaymentMethod.UnselectedItemTextColor = Color.FromArgb(40, 40, 100);
+            siticoneDropdownSalePaymentMethod.UnselectedItemTextColor = Color.FromArgb(60, 60, 60);
             siticoneDropdownSalePaymentMethod.ValueMember = null;
             // 
             // siticoneLabelSaleCustomerName
@@ -335,7 +335,7 @@
             siticoneButtonSaleConfirm.BadgeValueForeColor = Color.White;
             siticoneButtonSaleConfirm.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonSaleConfirm.BorderWidth = 1;
-            siticoneButtonSaleConfirm.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonSaleConfirm.ButtonBackColor = Color.FromArgb(192, 255, 192);
             siticoneButtonSaleConfirm.ButtonImage = null;
             siticoneButtonSaleConfirm.ButtonTextLeftPadding = 0;
             siticoneButtonSaleConfirm.CanBeep = true;
@@ -371,7 +371,7 @@
             siticoneButtonSaleConfirm.IsReadOnly = false;
             siticoneButtonSaleConfirm.IsToggleButton = false;
             siticoneButtonSaleConfirm.IsToggled = false;
-            siticoneButtonSaleConfirm.Location = new Point(45, 364);
+            siticoneButtonSaleConfirm.Location = new Point(45, 380);
             siticoneButtonSaleConfirm.LongPressDurationMS = 1000;
             siticoneButtonSaleConfirm.Name = "siticoneButtonSaleConfirm";
             siticoneButtonSaleConfirm.NormalFontStyle = FontStyle.Regular;
@@ -411,7 +411,7 @@
             siticoneButtonSaleCancel.BadgeValueForeColor = Color.White;
             siticoneButtonSaleCancel.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonSaleCancel.BorderWidth = 1;
-            siticoneButtonSaleCancel.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonSaleCancel.ButtonBackColor = Color.FromArgb(255, 192, 192);
             siticoneButtonSaleCancel.ButtonImage = null;
             siticoneButtonSaleCancel.ButtonTextLeftPadding = 0;
             siticoneButtonSaleCancel.CanBeep = true;
@@ -629,6 +629,7 @@
             siticoneBtnEditSaleItem.TooltipText = null;
             siticoneBtnEditSaleItem.UseAdvancedRendering = true;
             siticoneBtnEditSaleItem.UseParticles = false;
+            siticoneBtnEditSaleItem.Click += siticoneBtnEditSaleItem_Click;
             // 
             // siticoneBtnDeleteSaleItem
             // 
@@ -704,6 +705,7 @@
             siticoneBtnDeleteSaleItem.TooltipText = null;
             siticoneBtnDeleteSaleItem.UseAdvancedRendering = true;
             siticoneBtnDeleteSaleItem.UseParticles = false;
+            siticoneBtnDeleteSaleItem.Click += siticoneBtnDeleteSaleItem_Click;
             // 
             // siticoneDataGridViewSaleItem
             // 

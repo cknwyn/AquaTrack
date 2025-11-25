@@ -1,5 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using AquaTrack.Data;
+using Microsoft.EntityFrameworkCore;
+using PdfSharp;
+using PdfSharp.Fonts;
 
 namespace AquaTrack
 {
@@ -13,6 +15,7 @@ namespace AquaTrack
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            GlobalFontSettings.UseWindowsFontsUnderWindows = true;
             var optionBuilder = new DbContextOptionsBuilder<InventoryContext>();
             optionBuilder.UseSqlite("Data Source=InventoryAndSales.db");
             InventoryContext context = new InventoryContext(optionBuilder.Options);

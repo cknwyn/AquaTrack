@@ -83,6 +83,7 @@
             siticoneButtonTextboxSearchTasks.TopLeftCornerRadius = 20;
             siticoneButtonTextboxSearchTasks.TopRightCornerRadius = 20;
             siticoneButtonTextboxSearchTasks.ValidationEnabled = false;
+            siticoneButtonTextboxSearchTasks.ButtonClick += siticoneButtonTextboxSearchTasks_ButtonClick;
             // 
             // siticoneDataGridViewTasks
             // 

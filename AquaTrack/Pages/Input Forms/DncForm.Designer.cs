@@ -136,7 +136,7 @@
             // 
             siticoneLabelDamagedProduct.BackColor = Color.Transparent;
             siticoneLabelDamagedProduct.Font = new Font("Segoe UI", 10F);
-            siticoneLabelDamagedProduct.Location = new Point(41, 54);
+            siticoneLabelDamagedProduct.Location = new Point(41, 65);
             siticoneLabelDamagedProduct.Name = "siticoneLabelDamagedProduct";
             siticoneLabelDamagedProduct.Size = new Size(100, 23);
             siticoneLabelDamagedProduct.TabIndex = 4;
@@ -238,7 +238,7 @@
             siticoneButtonDamagedConfirm.BadgeValueForeColor = Color.White;
             siticoneButtonDamagedConfirm.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonDamagedConfirm.BorderWidth = 1;
-            siticoneButtonDamagedConfirm.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonDamagedConfirm.ButtonBackColor = Color.FromArgb(192, 255, 192);
             siticoneButtonDamagedConfirm.ButtonImage = null;
             siticoneButtonDamagedConfirm.ButtonTextLeftPadding = 0;
             siticoneButtonDamagedConfirm.CanBeep = true;
@@ -314,7 +314,7 @@
             siticoneButtonDamagedCancel.BadgeValueForeColor = Color.White;
             siticoneButtonDamagedCancel.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonDamagedCancel.BorderWidth = 1;
-            siticoneButtonDamagedCancel.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonDamagedCancel.ButtonBackColor = Color.FromArgb(255, 192, 192);
             siticoneButtonDamagedCancel.ButtonImage = null;
             siticoneButtonDamagedCancel.ButtonTextLeftPadding = 0;
             siticoneButtonDamagedCancel.CanBeep = true;

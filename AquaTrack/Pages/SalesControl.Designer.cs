@@ -85,6 +85,7 @@
             siticoneButtonTextboxSearchSales.TopLeftCornerRadius = 20;
             siticoneButtonTextboxSearchSales.TopRightCornerRadius = 20;
             siticoneButtonTextboxSearchSales.ValidationEnabled = false;
+            siticoneButtonTextboxSearchSales.ButtonClick += siticoneButtonTextboxSearchSales_ButtonClick;
             // 
             // siticoneDataGridViewSale
             // 

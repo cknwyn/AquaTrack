@@ -83,6 +83,7 @@
             siticoneButtonTextboxSearchSupplier.TopLeftCornerRadius = 20;
             siticoneButtonTextboxSearchSupplier.TopRightCornerRadius = 20;
             siticoneButtonTextboxSearchSupplier.ValidationEnabled = false;
+            siticoneButtonTextboxSearchSupplier.ButtonClick += siticoneButtonTextboxSearchSupplier_ButtonClick;
             // 
             // siticoneBtnAddSupplier
             // 

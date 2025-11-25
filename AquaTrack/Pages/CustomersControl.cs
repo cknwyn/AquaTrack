@@ -39,15 +39,43 @@ namespace AquaTrack.Pages
             await loadCustomersAsync();
         }
 
-        public async Task loadCustomersAsync()
+        public async Task loadCustomersAsync(string searchTerm = null)
         {
             var optionsBuilder = new DbContextOptionsBuilder<InventoryContext>();
             var options = optionsBuilder.UseSqlite("Data Source=InventoryAndSales.db").Options;
             _context = new InventoryContext(options);
 
-            var customersList = await _context.Customers.OrderBy(c => c.CustomerID).ToListAsync();
+            var customersQuery = _context.Customers.AsQueryable();
+
+            var searchFilter = searchTerm?.Trim() ?? string.Empty;
+            var isSearching = !string.IsNullOrWhiteSpace(searchFilter);
+
+            // --- APPLY SEARCH FILTER ---
+            if (isSearching)
+            {
+                // Try searching by ID/Number first
+                if (int.TryParse(searchFilter, out int number))
+                {
+                    // Search by CustomerID or ContactNumber
+                    customersQuery = customersQuery.Where(c => c.CustomerID == number || c.ContactNumber.Contains(searchFilter));
+                }
+                else
+                {
+                    // Search by Name or Email
+                    customersQuery = customersQuery.Where(c => c.Name.Contains(searchFilter) || c.Email.Contains(searchFilter));
+                }
+            }
+
+            var customersList = await customersQuery.OrderBy(c => c.CustomerID).ToListAsync();
+
             siticoneDataGridViewCustomers.DataSource = customersList;
             siticoneDataGridViewCustomers.Refresh();
+
+            // Optional: Provide feedback if the search returned no results
+            if (isSearching && customersList.Count == 0)
+            {
+                MessageBox.Show($"No customers found matching '{searchFilter}'.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private async void siticoneBtnDeleteCustomer_Click(object sender, EventArgs e)
@@ -156,6 +184,12 @@ namespace AquaTrack.Pages
                 MessageBox.Show("Could not identify the selected customer record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void siticoneButtonTextboxSearchCustomers_ButtonClick(object sender, SiticoneNetCoreUI.ButtonTextboxClickEventArgs e)
+        {
+            string searchTerm = siticoneButtonTextboxSearchCustomers?.Text?.Trim() ?? string.Empty;
+            _ = loadCustomersAsync(searchTerm);
         }
     }
 }

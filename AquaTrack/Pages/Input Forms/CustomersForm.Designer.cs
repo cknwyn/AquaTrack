@@ -243,7 +243,7 @@
             siticoneButtonCustomerConfirm.BadgeValueForeColor = Color.White;
             siticoneButtonCustomerConfirm.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonCustomerConfirm.BorderWidth = 1;
-            siticoneButtonCustomerConfirm.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonCustomerConfirm.ButtonBackColor = Color.FromArgb(192, 255, 192);
             siticoneButtonCustomerConfirm.ButtonImage = null;
             siticoneButtonCustomerConfirm.ButtonTextLeftPadding = 0;
             siticoneButtonCustomerConfirm.CanBeep = true;
@@ -319,7 +319,7 @@
             siticoneButtonCustomerCancel.BadgeValueForeColor = Color.White;
             siticoneButtonCustomerCancel.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonCustomerCancel.BorderWidth = 1;
-            siticoneButtonCustomerCancel.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonCustomerCancel.ButtonBackColor = Color.FromArgb(255, 192, 192);
             siticoneButtonCustomerCancel.ButtonImage = null;
             siticoneButtonCustomerCancel.ButtonTextLeftPadding = 0;
             siticoneButtonCustomerCancel.CanBeep = true;

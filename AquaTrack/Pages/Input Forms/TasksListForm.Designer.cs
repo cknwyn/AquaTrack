@@ -41,7 +41,7 @@
             // siticoneLabelTaskDetails
             // 
             siticoneLabelTaskDetails.BackColor = Color.Transparent;
-            siticoneLabelTaskDetails.Font = new Font("Segoe UI", 10F);
+            siticoneLabelTaskDetails.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             siticoneLabelTaskDetails.Location = new Point(12, 9);
             siticoneLabelTaskDetails.Name = "siticoneLabelTaskDetails";
             siticoneLabelTaskDetails.Size = new Size(100, 23);
@@ -255,7 +255,7 @@
             siticoneButtonTaskConfirm.BadgeValueForeColor = Color.White;
             siticoneButtonTaskConfirm.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonTaskConfirm.BorderWidth = 1;
-            siticoneButtonTaskConfirm.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonTaskConfirm.ButtonBackColor = Color.FromArgb(192, 255, 192);
             siticoneButtonTaskConfirm.ButtonImage = null;
             siticoneButtonTaskConfirm.ButtonTextLeftPadding = 0;
             siticoneButtonTaskConfirm.CanBeep = true;
@@ -331,7 +331,7 @@
             siticoneButtonTaskCancel.BadgeValueForeColor = Color.White;
             siticoneButtonTaskCancel.BorderColor = Color.FromArgb(213, 216, 220);
             siticoneButtonTaskCancel.BorderWidth = 1;
-            siticoneButtonTaskCancel.ButtonBackColor = Color.FromArgb(245, 247, 250);
+            siticoneButtonTaskCancel.ButtonBackColor = Color.FromArgb(255, 192, 192);
             siticoneButtonTaskCancel.ButtonImage = null;
             siticoneButtonTaskCancel.ButtonTextLeftPadding = 0;
             siticoneButtonTaskCancel.CanBeep = true;

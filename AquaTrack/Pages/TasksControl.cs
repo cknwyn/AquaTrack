@@ -103,8 +103,11 @@ namespace AquaTrack.Pages
             LoadTasksAsync();
         }
 
-        public async Task LoadTasksAsync()
+        public async Task LoadTasksAsync(string searchTerm = null)
         {
+            var searchFilter = searchTerm?.Trim() ?? string.Empty;
+            var isSearching = !string.IsNullOrWhiteSpace(searchFilter);
+
             try
             {
                 var options = new DbContextOptionsBuilder<InventoryContext>()
@@ -112,7 +115,19 @@ namespace AquaTrack.Pages
                     .Options;
 
                 using var ctx = new InventoryContext(options);
-                var list = await ctx.TaskNotes.OrderBy(t => t.TasknotesID).ToListAsync();
+
+                var tasksQuery = ctx.TaskNotes.AsQueryable();
+
+                // --- APPLY SEARCH FILTER ---
+                if (isSearching)
+                {
+                    // Filter by Content (case-insensitive search)
+                    tasksQuery = tasksQuery.Where(t => t.Content.Contains(searchFilter));
+                }
+
+                var list = await tasksQuery.OrderBy(t => t.TasknotesID).ToListAsync();
+
+                // --- Binding and UI Update ---
                 _bindingList = new BindingList<TaskNotes>(list);
                 if (InvokeRequired)
                 {
@@ -125,6 +140,13 @@ namespace AquaTrack.Pages
                 else
                 {
                     _grid.DataSource = _bindingList;
+                    LockDownGridColumns();
+                }
+
+                // Optional: Provide feedback if the search returned no results
+                if (isSearching && list.Count == 0)
+                {
+                    MessageBox.Show($"No tasks found matching '{searchFilter}'.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -264,7 +286,7 @@ namespace AquaTrack.Pages
                 int taskIdToEdit = selectedTask.TasknotesID;
 
                 // Open TasksListForm, passing the TasknotesID to indicate Edit Mode
-                TasksListForm tasksListForm = new TasksListForm(taskIdToEdit); // Use new constructor
+                TasksListForm tasksListForm = new TasksListForm(taskIdToEdit);
                 tasksListForm.TasksControlRef = this;
                 tasksListForm.ShowDialog();
             }
@@ -272,6 +294,12 @@ namespace AquaTrack.Pages
             {
                 MessageBox.Show("Could not identify the selected task record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void siticoneButtonTextboxSearchTasks_ButtonClick(object sender, SiticoneNetCoreUI.ButtonTextboxClickEventArgs e)
+        {
+            string searchTerm = siticoneButtonTextboxSearchTasks?.Text?.Trim() ?? string.Empty;
+            _ = LoadTasksAsync(searchTerm);
         }
     }
 }
